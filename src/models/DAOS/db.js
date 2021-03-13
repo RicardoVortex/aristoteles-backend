@@ -14,7 +14,8 @@ module.exports = function setupDatabase (config) {
   }
   sequelize
     .authenticate()
-    .then(() => { // console.log('ok')
+    .then(() => {
+      console.log('DB Conection ok')
     })
     .catch(err => {
       console.error('Unable to connect to the database:', err)

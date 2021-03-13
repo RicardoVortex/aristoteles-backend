@@ -1,71 +1,67 @@
-//inicia io
+// inicia io
 'use strict'
 const config = require('../../src/config/config')
-const db = require('../../src/models/dbConnectionModel');
-const { asyncMiddleware } = require('../../src/middlewares/errorHandle');
-const configpostgres = config().configpostgres;
+const db = require('../../src/models/dbConnectionModel')
+const { asyncMiddleware } = require('../../src/middlewares/errorHandle')
+const configpostgres = config().configpostgres
 
 let Usuarios
 let Emprendedores
 
-var postgres = asyncMiddleware(async function () {
-	const services = await db(configpostgres)
-	Usuarios = services.Usuarios
-	Emprendedores = services.Emprendedores
+const postgres = asyncMiddleware(async function () {
+  const services = await db(configpostgres)
+  Usuarios = services.Usuarios
+  Emprendedores = services.Emprendedores
 })
 
 postgres()
 
 module.exports = {
-	start: async function (io) {
+  start: async function (io) {
+    return io.on('connection', function (socket) {
+      console.log('cliente conectado - socket:', socket.id)
 
-		return io.on('connection', function (socket) {
+      socket.on('prueba', (data) => {
+        console.log(`el cliente: ${socket.id} envia `, data)
+      })
 
-			console.log('cliente conectado - socket:', socket.id)
+      socket.on('registrar', async (empr_id) => {
+        const emprendedor = await Emprendedores.findById(empr_id)
 
-			socket.on('prueba', (data) => {
-				console.log(`el cliente: ${socket.id} envia `, data)
-			})
+        if (emprendedor) {
+          const usuario = await Usuarios.findById(emprendedor.usuario_id)
 
-			socket.on('registrar', async (empr_id) => {
-				let emprendedor = await Emprendedores.findById(empr_id)
+          const usuarioUpdate = {
+            usuario_id: usuario.usuario_id,
+            idsocket: socket.id
+          }
 
-				if (emprendedor) {
-					let usuario = await Usuarios.findById(emprendedor.usuario_id)
+          await Usuarios.update(usuarioUpdate)
 
-					let usuarioUpdate = {
-						usuario_id: usuario.usuario_id,
-						idsocket: socket.id
-					}
+          io.to(socket.id).emit('log', { msj: 'registro correcto' })
+        } else {
+          io.to(socket.id).emit('log', { msj: 'no existe emprendedor' })
+        }
+      })
 
-					await Usuarios.update(usuarioUpdate);
-					
-					io.to(socket.id).emit('log', { msj: 'registro correcto' })
-				}else{
-					io.to(socket.id).emit('log', { msj: 'no existe emprendedor' })
-				}
-			})
+      io.to(socket.id).emit('pedirregistro', ' conectado al servidor correctamente')
 
-			io.to(socket.id).emit('pedirregistro', " conectado al servidor correctamente")
+      io.to(socket.id).emit('log', ' conectado al servidor: ' + Date() + ' ' + socket.id)
 
-			io.to(socket.id).emit('log', " conectado al servidor: " + Date() + " " + socket.id)
+      socket.on('disconnect', async () => {
+        const usuario = await Usuarios.findBySocket(socket.id)
 
-			socket.on('disconnect', async()=>{
-				let usuario = await Usuarios.findBySocket(socket.id)
+        if (usuario) {
+          const usuarioUpdate = {
+            usuario_id: usuario.usuario_id,
+            idsocket: null
+          }
 
-				if(usuario){
-					let usuarioUpdate = {
-						usuario_id: usuario.usuario_id,
-						idsocket: null
-					}
+          await Usuarios.update(usuarioUpdate)
+        }
 
-					await Usuarios.update(usuarioUpdate);
-				}
-
-				console.log('cliente desconectado - socket:', socket.id)
-			})
-		})
-
-
-	}
+        console.log('cliente desconectado - socket:', socket.id)
+      })
+    })
+  }
 }

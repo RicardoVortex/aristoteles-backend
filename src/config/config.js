@@ -1,7 +1,7 @@
 'use strict'
 const nodemailer = require('nodemailer')
 module.exports = function config () {
-  //process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
+  // process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
   const configEmail = nodemailer.createTransport({
     // host: 'smtp.gmail.com', // account.smtp.host,
     // port: 465, // account.smtp.port,
@@ -14,7 +14,7 @@ module.exports = function config () {
     // debug: true, // show debug output
   // logger: true // log information in console
   })
-/*
+  /*
     const configEmail = nodemailer.createTransport({
     host: 'mail.vortexsoluciones.com', // account.smtp.host,
     port: 465, // account.smtp.port,
@@ -34,10 +34,10 @@ module.exports = function config () {
       pass: 'a32014f88e8f85'
     }
   }) */
-  
+
   const config = {
-    encryptionMethod :'AES-256-CBC',
-    secretEncript :"My32charPasswordAndInitVectorStr",
+    encryptionMethod: 'AES-256-CBC',
+    secretEncript: 'My32charPasswordAndInitVectorStr',
     desarrollo: true,
     inTestEnvironment: true,
     port: 3000,
@@ -47,7 +47,7 @@ module.exports = function config () {
     secure: false,
     charset: 'utf8',
     configpostgres: {
-      database: process.env.DB_NAME || 'aritoteles_db',
+      database: process.env.DB_NAME || 'aristoteles_db',
       username: process.env.DB_USER || 'postgres',
       password: process.env.DB_PASS || 'root',
       host: process.env.DB_HOST || 'localhost',
@@ -55,27 +55,27 @@ module.exports = function config () {
       dialect: 'postgres',
       logging: false,
       freezeTableName: false,
-      //logging: s => console.log(s), //muestra todo lo de la base de datos
+      // logging: s => console.log(s), //muestra todo lo de la base de datos
       define: {
         charset: 'utf8',
         collate: 'utf8_general_ci',
         timestamps: true
       },
       dialectOptions: {
-        useUTC: false, // for reading from database
+        useUTC: false // for reading from database
       },
-      timezone: '-05:00', // for writing to database
+      timezone: '-05:00' // for writing to database
     },
     transporter: configEmail,
     secret: 'secretoJWT',
-    keyruta: `/etc/httpd/ssl/server.key`,
-    certruta: `/etc/httpd/ssl/server.crt`,
-    ca_root: `/etc/httpd/ssl/ca_root.ctr`,
-    ca_bundle: `/etc/httpd/ssl/ca_bundle.ctr`,
-    //Rango de paginacion
-    rango:15,
-    //rounds bycript
-    saltRounds: 10,
+    keyruta: '/etc/httpd/ssl/server.key',
+    certruta: '/etc/httpd/ssl/server.crt',
+    ca_root: '/etc/httpd/ssl/ca_root.ctr',
+    ca_bundle: '/etc/httpd/ssl/ca_bundle.ctr',
+    // Rango de paginacion
+    rango: 15,
+    // rounds bycript
+    saltRounds: 10
   }
 
   return config

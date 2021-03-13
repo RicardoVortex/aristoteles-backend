@@ -1,9 +1,9 @@
-const router = require('express').Router();
-//const publicacionRouter = require('./publicacionRoutes');
+const router = require('express').Router()
+// const publicacionRouter = require('./publicacionRoutes');
 
 const { validateTokenJWT } = require('../middlewares/auth')
 
-//router.use('/login',  publicacionRouter);
+// router.use('/login',  publicacionRouter);
 
 router.get('/prueba', (req, res) => {
   res.send(`
@@ -55,7 +55,6 @@ router.get('/prueba', (req, res) => {
     </body>
     </html>
     `)
-
 })
 
-module.exports = router;
+module.exports = router
