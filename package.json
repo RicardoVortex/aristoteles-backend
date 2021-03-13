@@ -1,0 +1,51 @@
+{
+  "name": "aristoteles-backend",
+  "version": "1.0.0",
+  "description": "Proyecto aristoteles, backend api, para vortex soluciones",
+  "main": "index.js",
+  "scripts": {
+    "start:local": "nodemon index.js & nodemon microservices/archivos/index.js",
+    "start:prod": "NODE_ENV=production node index.js",
+    "serveprod": " npm run start:prod",
+    "start:pru": "NODE_ENV=production node index.js",
+    "servepru": "npm run start:pru",
+    "start:testdb": " node test.js",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RicardoVortex/aristoteles-backend.git"
+  },
+  "keywords": [
+    "Educacion",
+    "Node",
+    "aprendizaje",
+    "postgresql"
+  ],
+  "author": "VortexSoluciones",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RicardoVortex/aristoteles-backend/issues"
+  },
+  "homepage": "https://github.com/RicardoVortex/aristoteles-backend#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.19.0",
+    "defaults": "^1.0.3",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "moment": "^2.29.1",
+    "node-fetch": "^2.6.1",
+    "nodemailer": "^6.5.0",
+    "path": "^0.12.7",
+    "pg": "^8.5.1",
+    "redis": "^3.0.2",
+    "sequelize": "^6.5.0",
+    "socket.io": "^4.0.0",
+    "urlencode": "^1.1.0"
+  },
+  "devDependencies": {
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.7"
+  }
+}
