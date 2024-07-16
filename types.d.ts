@@ -1,7 +1,6 @@
-import IUser from './src/core/entities/User';
-
-declare namespace Express {
+import { UserEntity } from "./src/domain/entities/user.entity";
+declare module "express-serve-static-core" {
   export interface Request {
-    user?: IUser
+    user?: UserEntity;
   }
 }
