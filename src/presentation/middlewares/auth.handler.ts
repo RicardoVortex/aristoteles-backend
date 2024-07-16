@@ -1,4 +1,4 @@
-import { NextFunction, Request, Response } from "express";
+import { NextFunction, Response } from "express";
 
 import { CustomError } from "../../domain/errors/custom.error";
 import { UserEntity } from "../../domain/entities";
@@ -7,12 +7,11 @@ import {
   AuthDataSource,
   UserDataSource,
 } from "../../infraestructure/datasource";
-
-import { HttpRequest } from "../../infraestructure/interfaces/http-interface";
+import { CustomRequest } from "../../infraestructure/interfaces/http-interface";
 
 export class AuthHandler {
   static checkAdminRole = (
-    req: Request,
+    req: CustomRequest,
     _res: Response,
     next: NextFunction
   ) => {
@@ -26,7 +25,7 @@ export class AuthHandler {
   };
 
   static checkToken = async (
-    req: Request,
+    req: CustomRequest,
     _res: Response,
     next: NextFunction
   ) => {
@@ -53,7 +52,7 @@ export class AuthHandler {
   };
 
   static checkRoles = (...roles: number[]) => {
-    return (req: HttpRequest, _res: Response, next: NextFunction) => {
+    return (req: CustomRequest, _res: Response, next: NextFunction) => {
       const user: any = req.user;
 
       if (roles.includes(parseInt(user.role_id))) {

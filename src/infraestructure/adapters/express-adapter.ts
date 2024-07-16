@@ -1,12 +1,7 @@
-import { Request, Response, NextFunction } from "express";
+import { Response, NextFunction } from "express";
 
 import { Controller } from "../interfaces/controllers";
-import { HttpRequest } from "../interfaces/http-interface";
-import { UserEntity } from "../../domain/entities";
-
-interface CustomRequest extends Request {
-  user?: UserEntity;
-}
+import { CustomRequest, HttpRequest } from "../interfaces/http-interface";
 
 export const AdapterRoute = (controller: Controller) => {
   return async (req: CustomRequest, res: Response, next: NextFunction) => {

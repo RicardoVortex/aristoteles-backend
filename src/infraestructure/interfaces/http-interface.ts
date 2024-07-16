@@ -1,4 +1,4 @@
-import { NextFunction } from "express";
+import { NextFunction, Request } from "express";
 
 import { UserEntity } from "../../domain/entities";
 
@@ -17,4 +17,8 @@ export interface HttpRequest {
 }
 export interface HttpNext {
   next: NextFunction;
+}
+
+export interface CustomRequest extends Request {
+  user?: UserEntity;
 }
