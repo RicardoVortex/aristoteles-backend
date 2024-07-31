@@ -1,4 +1,5 @@
 import { Controller } from "../../../infraestructure/interfaces/controllers";
+import { envs } from "../../../config";
 import {
   HttpRequest,
   HttpResponse,
@@ -30,12 +31,22 @@ export class RecoveryPasswordController implements Controller {
 
       const token = await this.authRepository.signTokenRecovery(user.id, code);
 
-      const url = `http://localhost:3000/recovery?token=${token}`;
+      // const url = `http://localhost:3000/recovery?token=${token}`;
+
+      const url = `http://localhost:${envs.PORT}/recovery?token=${token}`;
+
+      // await this.emailRepository.notifyRecoveryPassword({
+      //   name: `${user.names} ${user.surnames}`,
+      //   url,
+      //   to: user.email,
+      //   code,
+      // });
+
 
       await this.emailRepository.notifyRecoveryPassword({
         name: `${user.names} ${user.surnames}`,
         url,
-        to: user.email,
+        to: envs.EMAILTRAP_USER,
         code,
       });
 
