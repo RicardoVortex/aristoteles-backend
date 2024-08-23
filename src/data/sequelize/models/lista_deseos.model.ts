@@ -1,9 +1,9 @@
 import {DataTypes, Model, Sequelize} from "sequelize";
-import {ListaDeseosEntity} from "../../../domain/entities/lista_deseos.entity";
+import {ListaDeseosEntityApplication} from "../../../domain/entities/lista_deseos.entity";
 
-interface CrearListaDeseos extends Partial<ListaDeseosEntity>{}
+interface CrearListaDeseos extends Partial<ListaDeseosEntityApplication>{}
 
-class ListaDeseos extends Model<ListaDeseosEntity, CrearListaDeseos> implements ListaDeseosEntity {
+class ListaDeseos extends Model<ListaDeseosEntityApplication, CrearListaDeseos> implements ListaDeseosEntityApplication {
 
 
     public id!: number

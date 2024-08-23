@@ -11,3 +11,11 @@ export class RoleEntity {
     return new RoleEntity(id, name, description);
   }
 }
+
+export interface RoleEntityApplication{
+
+  id: number,
+  name: string,
+  description?: string | null
+
+}

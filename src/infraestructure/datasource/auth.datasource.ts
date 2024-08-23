@@ -7,7 +7,7 @@ import { envs } from "../../config";
 import { AuthRepository } from "../../domain/repositories";
 import { ChangePasswordDto, SignTokenDto } from "../../domain/dtos";
 import { CustomError } from "../../domain/errors/custom.error";
-import { UserEntity } from "../../domain/entities";
+import { UserEntityApplication } from "../../domain/entities";
 
 import User from "../../data/sequelize/models/user.model";
 
@@ -20,7 +20,7 @@ export class AuthDataSource implements AuthRepository {
     }
   }
 
-  async validateCode(user: UserEntity, code: string): Promise<boolean> {
+  async validateCode(user: UserEntityApplication, code: string): Promise<boolean> {
     return user.code === code;
   }
 

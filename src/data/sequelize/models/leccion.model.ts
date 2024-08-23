@@ -1,10 +1,10 @@
 import {DataTypes, Model, Sequelize} from "sequelize";
 // import {SequelizeModel} from "../../../infraestructure/types/sequelize";
-import {LeccionEntity} from "../../../domain/entities/leccion.entity";
+import {LeccionEntityApplication} from "../../../domain/entities/leccion.entity";
 
-interface CrearLeccion extends Partial<LeccionEntity>{}
+interface CrearLeccion extends Partial<LeccionEntityApplication>{}
 
-class Lecciones extends Model<LeccionEntity, CrearLeccion> implements LeccionEntity {
+class Lecciones extends Model<LeccionEntityApplication, CrearLeccion> implements LeccionEntityApplication {
 
 
     public id!: number;

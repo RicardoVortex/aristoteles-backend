@@ -1,10 +1,10 @@
 import {DataTypes, Model, Sequelize} from "sequelize";
 import {SequelizeModel} from "../../../infraestructure/types/sequelize";
-import {CalificacionEntity} from "../../../domain/entities/calificacion.entity";
+import {CalificacionEntityApplication} from "../../../domain/entities/calificacion.entity";
 
-interface CrearCalificacion extends Partial<CalificacionEntity>{}
+interface CrearCalificacion extends Partial<CalificacionEntityApplication>{}
 
-class Calificaciones extends Model<CalificacionEntity, CrearCalificacion> implements CalificacionEntity {
+class Calificaciones extends Model<CalificacionEntityApplication, CrearCalificacion> implements CalificacionEntityApplication {
 
 
     public id!: number;

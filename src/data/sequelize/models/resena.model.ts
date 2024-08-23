@@ -1,10 +1,10 @@
 import {DataTypes, Model, Sequelize} from "sequelize";
 import {SequelizeModel} from "../../../infraestructure/types/sequelize";
-import {ResenaEntity} from "../../../domain/entities/reseña.entity";
+import {ResenaEntityApplication} from "../../../domain/entities/reseña.entity";
 
-interface CrearResena extends Partial<ResenaEntity>{}
+interface CrearResena extends Partial<ResenaEntityApplication>{}
 
-class Resenas extends Model<ResenaEntity, CrearResena> implements ResenaEntity {
+class Resenas extends Model<ResenaEntityApplication, CrearResena> implements ResenaEntityApplication {
 
 
     public id!: number

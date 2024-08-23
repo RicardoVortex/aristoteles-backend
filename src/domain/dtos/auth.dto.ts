@@ -1,17 +1,17 @@
-import { UserEntity } from "../entities";
+import { UserEntityApplication } from "../entities";
 
-export class SignTokenDto {
-  private constructor(
-    public readonly id: number,
-    public readonly role_id: number
-  ) {}
+export interface SignTokenDto {
+  
+    readonly id: number,
+    readonly role_id: number
+  
 }
 
-export class ChangePasswordDto {
-  private constructor(
-    public readonly token: string,
-    public readonly newPassword: string,
-    public readonly user: UserEntity,
-    public readonly code: string
-  ) {}
+export interface ChangePasswordDto {
+
+    readonly token: string,
+    readonly newPassword: string,
+    readonly user: UserEntityApplication,
+    readonly code: string
+  
 }

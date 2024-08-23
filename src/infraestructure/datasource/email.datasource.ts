@@ -5,7 +5,7 @@ import { htmlToText } from "html-to-text";
 
 import { EmailRepository } from "../../domain/repositories/email.repository";
 
-import { UserEntity } from "../../domain/entities/user.entity";
+import { UserEntityApplication } from "../../domain/entities/user.entity";
 import { SendEmailOptionsDto, SendRecoveryDto } from "../../domain/dtos";
 
 import { envs } from "../../config";
@@ -20,7 +20,7 @@ export class EmailDataSource implements EmailRepository {
     });
   }
 
-  async notifyUser(_user: UserEntity): Promise<void> {
+  async notifyUser(_user: UserEntityApplication): Promise<void> {
     // const mailOptions: SendMailOptions = {
     //   from: "Nombre del proyecto/empresa",
     //   to: user.email,

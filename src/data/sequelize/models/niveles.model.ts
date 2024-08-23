@@ -1,16 +1,14 @@
 import {DataTypes, Model, Sequelize} from "sequelize";
 import {SequelizeModel} from "../../../infraestructure/types/sequelize";
-import {NivelEntity} from "../../../domain/entities/nivel.entity";
+import {NivelEntityApplication} from "../../../domain/entities/nivel.entity";
 
-interface CrearNivel extends Partial<NivelEntity>{}
+interface CrearNivel extends Partial<NivelEntityApplication>{}
 
-class Niveles extends Model<NivelEntity, CrearNivel> implements NivelEntity {
+class Niveles extends Model<NivelEntityApplication, CrearNivel> implements NivelEntityApplication {
 
 
     public id!: number;
     public nivel!: string;
-
-
 
 
 

@@ -1,9 +1,9 @@
 import {DataTypes, Model, Sequelize} from "sequelize";
-import {ModuloHasLeccionEntity} from "../../../domain/entities/modulo_has_leccion.entity";
+import {ModuloHasLeccionEntityApplication} from "../../../domain/entities/modulo_has_leccion.entity";
 
-interface CrearModuloHasLeccion extends Partial<ModuloHasLeccionEntity>{}
+interface CrearModuloHasLeccion extends Partial<ModuloHasLeccionEntityApplication>{}
 
-class ModulosLeccion extends Model<ModuloHasLeccionEntity, CrearModuloHasLeccion> implements ModuloHasLeccionEntity {
+class ModulosLeccion extends Model<ModuloHasLeccionEntityApplication, CrearModuloHasLeccion> implements ModuloHasLeccionEntityApplication {
 
 
     public id!: number;

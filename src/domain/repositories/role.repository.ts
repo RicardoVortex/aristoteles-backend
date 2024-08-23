@@ -1,11 +1,11 @@
 import { CreateRoleDto, UpdateRoleDto } from "../dtos";
 
-import { RoleEntity } from "../entities/role.entity";
+import { RoleEntityApplication } from "../entities/role.entity";
 
-export abstract class RoleRepository {
-  abstract create(role: CreateRoleDto): Promise<RoleEntity>;
-  abstract getOne(id: number): Promise<RoleEntity>;
-  abstract getAll(): Promise<RoleEntity[]>;
-  abstract update(id: number, change: UpdateRoleDto): Promise<RoleEntity>;
-  abstract delete(id: number): Promise<number>;
+export interface RoleRepository {
+  create(role: CreateRoleDto): Promise<RoleEntityApplication>;
+  getOne(id: number): Promise<RoleEntityApplication>;
+  getAll(): Promise<RoleEntityApplication[]>;
+  update(id: number, change: UpdateRoleDto): Promise<RoleEntityApplication>;
+  delete(id: number): Promise<number>;
 }

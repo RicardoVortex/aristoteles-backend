@@ -6,8 +6,8 @@ export class UserEntity {
     public email: string,
     public date_birth: Date | null,
     public role_id: number,
-    public code: string,
-    public recoveryToken: string,
+    public code: string | null,
+    public recoveryToken: string | null,
     public last_login: Date | null,
     public password?: string
   ) {}
@@ -39,4 +39,20 @@ export class UserEntity {
       password
     );
   }
+}
+
+
+export interface UserEntityApplication{
+
+  id: number,
+  names: string,
+  surnames: string,
+  email: string,
+  date_birth: Date | null,
+  role_id: number,
+  code: string | null,
+  recoveryToken: string | null,
+  last_login: Date | null,
+  password?: string
+
 }
