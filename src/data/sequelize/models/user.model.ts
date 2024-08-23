@@ -22,6 +22,11 @@ class User extends Model<UserEntity, UserCreationAttributes> {
       foreignKey: "role_id",
       as: "role",
     });
+    User.hasMany(models.Resenas, {
+      as: "resena",
+      foreignKey: "user_id"
+    }
+  );
   }
 
   static initModel(sequelize: Sequelize) {
