@@ -1,7 +1,7 @@
-import {CustomErrorInt} from "./custom.error.int";
+import {CustomErrorInterface} from "./custom.error.interface";
 
 
-interface CustomErrorPar extends Partial<CustomErrorInt>{}
+interface CustomErrorPar extends Partial<CustomErrorInterface>{}
 
 export class CustomError extends Error implements CustomErrorPar{
   constructor(
@@ -14,23 +14,23 @@ export class CustomError extends Error implements CustomErrorPar{
     Error.captureStackTrace(this, this.constructor);
   }
 
-  static badRequest(message: string): CustomErrorInt {
+  static badRequest(message: string): CustomErrorInterface {
     return new CustomError(400, message);
   }
 
-  static unauthorized(message: string): CustomErrorInt  {
+  static unauthorized(message: string): CustomErrorInterface  {
     return new CustomError(401, message);
   }
 
-  static forbidden(message: string): CustomErrorInt  {
+  static forbidden(message: string): CustomErrorInterface  {
     return new CustomError(403, message);
   }
 
-  static notFound(message: string): CustomErrorInt  {
+  static notFound(message: string): CustomErrorInterface  {
     return new CustomError(404, message);
   }
 
-  static internalServer(message: string): CustomErrorInt  {
+  static internalServer(message: string): CustomErrorInterface  {
     return new CustomError(500, message);
   }
 }

@@ -1,6 +1,7 @@
 import { NextFunction, Request } from "express";
 
-import { UserEntity } from "../../domain/entities";
+// import { UserEntity } from "../../domain/entities";
+import { UserEntityApplication } from "../../domain/entities";
 
 export interface HttpResponse {
   statusCode: number;
@@ -13,12 +14,12 @@ export interface HttpRequest {
   body?: any;
   params?: any;
   query?: any;
-  user?: UserEntity;
+  user?: UserEntityApplication;
 }
 export interface HttpNext {
   next: NextFunction;
 }
 
 export interface CustomRequest extends Request {
-  user?: UserEntity;
+  user?: UserEntityApplication;
 }

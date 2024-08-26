@@ -86,7 +86,7 @@ class Cursos extends Model<CursosEntityApplication, CrearCurso> implements Curso
                 unique: true,
             },
             requisitos: {
-                type: DataTypes.STRING,
+                type: DataTypes.ARRAY(DataTypes.STRING),
                 allowNull: false,
                 unique: true,
             },
@@ -96,7 +96,7 @@ class Cursos extends Model<CursosEntityApplication, CrearCurso> implements Curso
                 unique: true,
             },
             fecha_inicio: {
-                type: DataTypes.ARRAY(DataTypes.STRING),
+                type: DataTypes.DATE,
                 allowNull: false,
                 unique: true,
             },

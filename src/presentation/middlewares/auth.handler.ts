@@ -1,7 +1,8 @@
 import { NextFunction, Response } from "express";
 
 import { CustomError } from "../../domain/errors/custom.error";
-import { UserEntity } from "../../domain/entities";
+// import { UserEntity } from "../../domain/entities";
+import { UserEntityApplication } from "../../domain/entities";
 
 import {
   AuthDataSource,
@@ -15,7 +16,7 @@ export class AuthHandler {
     _res: Response,
     next: NextFunction
   ) => {
-    const user: UserEntity = req.user!;
+    const user: UserEntityApplication = req.user!;
 
     if (user.role_id === 1) {
       next();

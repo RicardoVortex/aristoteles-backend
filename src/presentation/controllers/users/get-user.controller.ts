@@ -1,4 +1,5 @@
-import { UserEntity } from "../../../domain/entities/user.entity";
+// import { UserEntity } from "../../../domain/entities/user.entity";
+import { UserEntityApplication } from "../../../domain/entities/user.entity";
 import { UserRepository } from "../../../domain/repositories/user.repository";
 
 import { Controller } from "../../../infraestructure/interfaces/controllers";
@@ -18,7 +19,7 @@ export class GetUserController implements Controller {
 
       const user = await this.userRepository.getOne(id);
 
-      return HttpHelper.success<UserEntity>(
+      return HttpHelper.success<UserEntityApplication>(
         user,
         "Usuario obtenido correctamente"
       );
