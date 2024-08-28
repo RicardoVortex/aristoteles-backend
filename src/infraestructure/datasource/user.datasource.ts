@@ -94,7 +94,7 @@ export class UserDataSource implements UserRepository {
     const { email, password, role_id, ...dataUpdate } = change;
 
     try {
-      await User.update(dataUpdate, { where: { id } });
+      await User.update({...dataUpdate, role_id, email} , { where: { id } });
     } catch (error) {
       throw CustomError.internalServer(`${error}`);
     }

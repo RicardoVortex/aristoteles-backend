@@ -52,7 +52,7 @@ class Resenas extends Model<ResenaEntityApplication, CrearResena> implements Res
                   onDelete: "SET NULL"
               },
             resena: {
-              type: DataTypes.INTEGER,
+              type: DataTypes.STRING,
               allowNull: false
             },
             user_id: {

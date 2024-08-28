@@ -10,3 +10,7 @@ export * from "./nivel.entity";
 export * from "./reseña.entity";
 export * from "./role.entity";
 export * from "./user.entity";
+export * from "./categoria.entity";
+export * from "./requisito.entity";
+export * from "./categoria_has_cursos.entity";
+export * from "./requisito_has_cursos.entity";

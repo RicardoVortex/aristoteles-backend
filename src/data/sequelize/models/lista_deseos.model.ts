@@ -46,18 +46,15 @@ class ListaDeseos extends Model<ListaDeseosEntityApplication, CrearListaDeseos> 
               },
               favorito: {
                 type: DataTypes.BOOLEAN,
-                allowNull: false,
-                unique: true
+                allowNull: false
               },
               fecha_cr: {
                 type: DataTypes.DATE,
-                allowNull: false,
-                unique: true
+                allowNull: false
               },
               fecha_at: {
                 type: DataTypes.DATE,
-                allowNull: false,
-                unique: true
+                allowNull: false
               },
 
           },

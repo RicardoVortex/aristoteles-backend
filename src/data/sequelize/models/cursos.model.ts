@@ -13,7 +13,6 @@ class Cursos extends Model<CursosEntityApplication, CrearCurso> implements Curso
     public objetivos!: string
     public duracion!: number
     public nivel_id!: number
-    public requisitos!: Array<string>
     public instructor_id!: number
     public fecha_inicio!: Date
     public resena_id!: number
@@ -80,10 +79,6 @@ class Cursos extends Model<CursosEntityApplication, CrearCurso> implements Curso
             nivel_id: {
                 type: DataTypes.INTEGER,
                 allowNull: false
-            },
-            requisitos: {
-                type: DataTypes.ARRAY(DataTypes.STRING),
-                allowNull: true
             },
             instructor_id: {
                 type: DataTypes.INTEGER,

@@ -5,7 +5,6 @@ export interface CreateCursoDto {
     readonly objetivos: string
     readonly duracion: number
     readonly nivel_id: number
-    readonly requisitos: Array<string>
     readonly instructor_id: number
     readonly fecha_inicio: Date
     readonly resena_id: number
@@ -20,7 +19,6 @@ export interface UpdateCursoDto {
     readonly objetivos?: string
     readonly duracion?: number
     readonly nivel_id?: number
-    readonly requisitos?: Array<string>
     readonly instructor_id?: number
     readonly fecha_inicio?: Date
     readonly resena_id?: number
