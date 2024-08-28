@@ -32,8 +32,7 @@ class Niveles extends Model<NivelEntityApplication, CrearNivel> implements Nivel
             },
             nivel: {
               type: DataTypes.STRING,
-              allowNull: false,
-              unique: true,
+              allowNull: false
             }
           },
           {

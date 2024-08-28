@@ -30,17 +30,15 @@ class Instructores extends Model<InstructorEntityApplication, CrearNivel> implem
             id: {
               type: DataTypes.INTEGER,
               autoIncrement: true,
-              primaryKey: true,
+              primaryKey: true
             },
             nombre: {
               type: DataTypes.STRING,
-              allowNull: false,
-              unique: true,
+              allowNull: false
             },
             apellido: {
                 type: DataTypes.STRING,
-                allowNull: false,
-                unique: true,
+                allowNull: false
               }
           },
           {

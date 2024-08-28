@@ -38,40 +38,40 @@ implements UserEntityApplication
         id: {
           type: DataTypes.INTEGER,
           autoIncrement: true,
-          primaryKey: true,
+          primaryKey: true
         },
         names: {
           type: DataTypes.STRING,
-          allowNull: false,
+          allowNull: false
         },
         surnames: {
           type: DataTypes.STRING,
-          allowNull: false,
+          allowNull: false
         },
         email: {
           type: DataTypes.STRING,
           allowNull: false,
-          unique: true,
+          unique: true
         },
         password: {
           type: DataTypes.STRING,
-          allowNull: false,
+          allowNull: false
         },
         date_birth: {
           type: DataTypes.DATE,
-          allowNull: true,
+          allowNull: true
         },
         last_login: {
           type: DataTypes.DATE,
-          allowNull: true,
+          allowNull: true
         },
         code: {
           type: DataTypes.STRING,
-          allowNull: true,
+          allowNull: true
         },
         recoveryToken: {
           type: DataTypes.STRING,
-          allowNull: true,
+          allowNull: true
         },
         role_id: {
           type: DataTypes.INTEGER,

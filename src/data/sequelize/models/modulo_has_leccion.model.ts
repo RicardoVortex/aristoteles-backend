@@ -28,7 +28,7 @@ class ModulosLeccion extends Model<ModuloHasLeccionEntityApplication, CrearModul
                 key: "id"
               },
               onUpdate: "CASCADE",
-              onDelete: "SET NULL",
+              onDelete: "SET NULL"
             },
             leccion_id: {
               field: "leccion_id",
@@ -39,12 +39,12 @@ class ModulosLeccion extends Model<ModuloHasLeccionEntityApplication, CrearModul
                 key: "id"
               },
               onUpdate: "CASCADE",
-              onDelete: "SET NULL",
+              onDelete: "SET NULL"
               }
           },
           {
             sequelize,
-            modelName: "Modulos_lecciones",
+            modelName: "Modulos_lecciones"
           }
         );
       }

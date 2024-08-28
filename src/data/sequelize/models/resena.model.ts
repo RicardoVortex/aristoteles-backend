@@ -53,8 +53,7 @@ class Resenas extends Model<ResenaEntityApplication, CrearResena> implements Res
               },
             resena: {
               type: DataTypes.INTEGER,
-              allowNull: false,
-              unique: true,
+              allowNull: false
             },
             user_id: {
                 field: "user_id",

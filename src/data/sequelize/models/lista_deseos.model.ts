@@ -20,7 +20,7 @@ class ListaDeseos extends Model<ListaDeseosEntityApplication, CrearListaDeseos> 
             id: {
               type: DataTypes.INTEGER,
               autoIncrement: true,
-              primaryKey: true,
+              primaryKey: true
             },
             curso_id: {
               field: "curso_id",
@@ -31,7 +31,7 @@ class ListaDeseos extends Model<ListaDeseosEntityApplication, CrearListaDeseos> 
                 key: "id"
               },
               onUpdate: "CASCADE",
-              onDelete: "SET NULL",
+              onDelete: "SET NULL"
             },
             user_id: {
               field: "user_id",
@@ -42,22 +42,22 @@ class ListaDeseos extends Model<ListaDeseosEntityApplication, CrearListaDeseos> 
                 key: "id"
               },
               onUpdate: "CASCADE",
-              onDelete: "SET NULL",
+              onDelete: "SET NULL"
               },
               favorito: {
                 type: DataTypes.BOOLEAN,
                 allowNull: false,
-                unique: true,
+                unique: true
               },
               fecha_cr: {
                 type: DataTypes.DATE,
                 allowNull: false,
-                unique: true,
+                unique: true
               },
               fecha_at: {
                 type: DataTypes.DATE,
                 allowNull: false,
-                unique: true,
+                unique: true
               },
 
           },

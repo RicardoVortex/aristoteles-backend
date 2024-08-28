@@ -26,16 +26,16 @@ class Role
         id: {
           type: DataTypes.INTEGER,
           autoIncrement: true,
-          primaryKey: true,
+          primaryKey: true
         },
         name: {
           type: DataTypes.STRING,
           allowNull: false,
-          unique: true,
+          unique: true
         },
         description: {
           type: DataTypes.STRING,
-          allowNull: true,
+          allowNull: true
         },
       },
       {

@@ -31,12 +31,12 @@ class Lecciones extends Model<LeccionEntityApplication, CrearLeccion> implements
             id: {
               type: DataTypes.INTEGER,
               autoIncrement: true,
-              primaryKey: true,
+              primaryKey: true
             },
             leccion: {
               type: DataTypes.STRING,
               allowNull: false,
-              unique: true,
+              unique: true
             }
           },
           {

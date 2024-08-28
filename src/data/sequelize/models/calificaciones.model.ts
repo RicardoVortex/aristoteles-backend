@@ -28,12 +28,12 @@ class Calificaciones extends Model<CalificacionEntityApplication, CrearCalificac
             id: {
               type: DataTypes.INTEGER,
               autoIncrement: true,
-              primaryKey: true,
+              primaryKey: true
             },
             calificacion: {
               type: DataTypes.STRING,
               allowNull: false,
-              unique: true,
+              unique: true
             }
           },
           {

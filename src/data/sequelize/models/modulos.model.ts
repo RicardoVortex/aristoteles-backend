@@ -31,17 +31,17 @@ class Modulos extends Model<ModuloEntityApplication, CrearModulo> implements Mod
             id: {
               type: DataTypes.INTEGER,
               autoIncrement: true,
-              primaryKey: true,
+              primaryKey: true
             },
             modulo: {
               type: DataTypes.STRING,
               allowNull: false,
-              unique: true,
+              unique: true
             }
           },
           {
             sequelize,
-            modelName: "Modulos",
+            modelName: "Modulos"
           }
         );
       }

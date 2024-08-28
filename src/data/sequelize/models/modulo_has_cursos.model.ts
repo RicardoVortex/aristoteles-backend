@@ -17,7 +17,7 @@ class ModulosCursos extends Model<ModuloHasCursosEntityApplication, CrearModuloH
             id: {
               type: DataTypes.INTEGER,
               autoIncrement: true,
-              primaryKey: true,
+              primaryKey: true
             },
             curso_id: {
               field: "curso_id",
@@ -28,7 +28,7 @@ class ModulosCursos extends Model<ModuloHasCursosEntityApplication, CrearModuloH
                 key: "id"
               },
               onUpdate: "CASCADE",
-              onDelete: "SET NULL",
+              onDelete: "SET NULL"
             },
             modulo_id: {
               field: "modulo_id",
@@ -39,7 +39,7 @@ class ModulosCursos extends Model<ModuloHasCursosEntityApplication, CrearModuloH
                 key: "id"
               },
               onUpdate: "CASCADE",
-              onDelete: "SET NULL",
+              onDelete: "SET NULL"
               }
           },
           {

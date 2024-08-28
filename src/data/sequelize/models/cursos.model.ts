@@ -58,47 +58,40 @@ class Cursos extends Model<CursosEntityApplication, CrearCurso> implements Curso
             id: {
               type: DataTypes.INTEGER,
               autoIncrement: true,
-              primaryKey: true,
+              primaryKey: true
             },
             titulo: {
               type: DataTypes.STRING,
               allowNull: false,
-              unique: true,
+              unique: true
             },
             descripcion: {
                 type: DataTypes.STRING,
-                allowNull: false,
-                unique: true,
+                allowNull: false
             },
             objetivos: {
                 type: DataTypes.STRING,
-                allowNull: false,
-                unique: true,
+                allowNull: false
             },
             duracion: {
                 type: DataTypes.INTEGER,
-                allowNull: false,
-                unique: true,
+                allowNull: false
             },
             nivel_id: {
                 type: DataTypes.INTEGER,
-                allowNull: false,
-                unique: true,
+                allowNull: false
             },
             requisitos: {
                 type: DataTypes.ARRAY(DataTypes.STRING),
-                allowNull: false,
-                unique: true,
+                allowNull: true
             },
             instructor_id: {
                 type: DataTypes.INTEGER,
-                allowNull: false,
-                unique: true,
+                allowNull: false
             },
             fecha_inicio: {
                 type: DataTypes.DATE,
-                allowNull: false,
-                unique: true,
+                allowNull: false
             },
             resena_id: {
                 type: DataTypes.INTEGER,
@@ -107,8 +100,7 @@ class Cursos extends Model<CursosEntityApplication, CrearCurso> implements Curso
             },
             foto: {
                 type: DataTypes.STRING,
-                allowNull: false,
-                unique: true,
+                allowNull: false
             }
           },
           {
