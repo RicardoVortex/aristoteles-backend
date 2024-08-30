@@ -34,6 +34,20 @@ class Cursos extends Model<CursosEntityApplication, CrearCurso> implements Curso
             otherKey: "user_id"
           }
         );
+        Cursos.belongsToMany(models.Requisitos, {
+          as: "requisito",
+          through: "Requisitos_cursos",
+          foreignKey: "curso_id",
+          otherKey: "requisito_id"
+        }
+        );
+        Cursos.belongsToMany(models.Categorias, {
+          as: "categoria",
+          through: "Categorias_cursos",
+          foreignKey: "curso_id",
+          otherKey: "categoria_id"
+        }
+        );
         Cursos.belongsTo(models.Niveles, {
             as: "nivel"
           }

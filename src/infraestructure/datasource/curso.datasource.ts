@@ -9,6 +9,8 @@ import Modulo from "../../data/sequelize/models/modulos.model";
 import User from "../../data/sequelize/models/user.model";
 import Role from "../../data/sequelize/models/rol.model";
 import Calificacion from "../../data/sequelize/models/calificaciones.model";
+import Requisito from "../../data/sequelize/models/requisito.model";
+import Categoria from "../../data/sequelize/models/categoria.model";
 
 
 
@@ -46,9 +48,19 @@ export class CursoDataSource implements CursoRepository {
                 }]
             },
             {
+                as: "requisito",
+                attributes: ["id", "requisito"],
+                model: Requisito
+            },
+            {
                 as: "nivel",
                 attributes: ["id", "nivel"],
                 model: Nivel
+            },
+            {
+                as: "categoria",
+                attributes: ["id", "categoria"],
+                model: Categoria
             },
             {
                 as: "instructor",
@@ -83,7 +95,33 @@ export class CursoDataSource implements CursoRepository {
         return curso;
     }
     async getAll(): Promise<CursosEntityApplication[]> {
-        const cursos = await Curso.findAll();
+        const cursos = await Curso.findAll({
+            attributes: [
+                "id",
+                "titulo",
+                "duracion",
+                "nivel_id",
+                "instructor_id",
+                "foto"
+              ],
+            include: [
+                {
+                    as: "nivel",
+                    attributes: ["id", "nivel"],
+                    model: Nivel
+                },
+                {
+                    as: "instructor",
+                    attributes: ["id", "nombre", "apellido"],
+                    model: Instructor
+                },
+                {
+                    as: "categoria",
+                    attributes: ["id", "categoria"],
+                    model: Categoria
+                }
+            ]
+          });
       
         return cursos.map((cursos) => cursos);
     }
