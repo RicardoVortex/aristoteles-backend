@@ -1,0 +1,71 @@
+{
+    "id": 1,
+    "titulo": "Nombre del curso",
+    "descripcion": "descripcion del curso",
+    "objetivos": "objetivos del curso",
+    "duracion": "duracion del curso",
+    "nivel": "nivel del curso",
+    "requisitos": [
+        {
+            "id": 1,
+            "name": "nombre del requisito"
+        },
+        {
+            "id": 2,
+            "name": "nombre del requisito"
+        }
+    ],
+    "modulos": [
+        {
+            "id": 1,
+            "name": "Nombre del modulo",
+            "lecciones": [
+                {
+                    "id": 1,
+                    "name": "nombre de la leccione"
+                },
+                {
+                    "id": 2,
+                    "name": "nombre de la leccione"
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "name": "Nombre del modulo",
+            "lecciones": [
+                {
+                    "id": 1,
+                    "name": "nombre de la leccione"
+                },
+                {
+                    "id": 2,
+                    "name": "nombre de la leccione"
+                }
+            ]
+        }
+    ],
+    "instructor": {
+        "name": "nombre del instructor",
+        "surname": "Apellido del instructor"
+    },
+    "fecha_de_inicio": "fecha de inicio",
+    "reseñas": [
+        { 
+            "id": 1,
+            "reseña": "reseña jasjdjasja",
+            "estudiante": {
+                "id": 1,
+                "name": "Nombre del estudiante"
+            }
+        }, 
+        { 
+            "id": 2,
+            "reseña": "reseña jasjdjasja",
+            "estudiante": {
+                "id": 1,
+                "name": "Nombre del estudiante"
+            }
+        }
+    ]
+}

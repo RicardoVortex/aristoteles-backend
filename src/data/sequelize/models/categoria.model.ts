@@ -13,7 +13,7 @@ class Categorias extends Model<CategoriaEntityApplication, CrearCategoria> imple
 
 
     static associate(models: { [key: string]: SequelizeModel }) {
-        Categorias.belongsToMany(models.Lecciones, {
+        Categorias.belongsToMany(models.Cursos, {
             as: "curso",
             through: "Categorias_cursos",
             foreignKey: "categoria_id",

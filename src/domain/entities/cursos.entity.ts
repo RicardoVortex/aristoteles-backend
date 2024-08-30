@@ -1,4 +1,8 @@
+import Curso from "../../data/sequelize/models/cursos.model";
+
+
 // export class CursosEntity{
+
 
 //     constructor(
 //         public id: number,
@@ -64,3 +68,152 @@ export interface CursosEntityApplication{
   
   }
   
+
+  export interface CursosSalidaApplication extends Omit<CursosEntityApplication, "instructor_id">{
+
+
+  }
+
+interface ListaFavorito{
+
+favorito: boolean
+
+}
+
+  interface Modulopar{
+
+    modulo:string
+  }
+
+  interface Userpar{
+
+    
+      names: string,
+      surnames: string,
+      email: string,
+      date_birth: Date,
+      Lista_deseos: ListaFavorito
+  
+  }
+
+  interface Requisitopar{
+
+    
+    names: string,
+    surnames: string,
+    email: string,
+    date_birth: Date,
+    Lista_deseos: ListaFavorito
+
+}
+
+
+interface Nivelpar{
+  names: string,
+  surnames: string,
+  email: string,
+  date_birth: Date,
+  Lista_deseos: ListaFavorito
+}
+
+
+
+interface Instructorpar{
+    nombre: string
+    apellido: string
+}
+
+interface Resenapar{
+    resena: string,
+    calificacion: object
+}
+
+
+// interface BodyContent{
+
+//     id: number
+//     titulo: string
+//     descripcion: string
+//     objetivos: string
+//     duracion: number
+//     fecha_inicio: Date
+//     foto: string,
+//     modulo: Modulopar[]
+//     user: Userpar[]
+//     requisito: Requisitopar[]
+//     nivel: Nivelpar
+//     categoria: []
+//     instructor: Instructorpar
+//     resena: Resenapar
+
+// }
+
+
+
+  export interface CursosTiposApplication extends Partial<Curso> {
+
+
+      body?: {
+          id: number,
+          titulo: string,
+          descripcion: string,
+          objetivos: string,
+          duracion: number,
+          fecha_inicio: Date,
+          foto: string,
+          modulo: Modulopar[],
+          user: Userpar[],
+          requisito: Requisitopar[],
+          nivel: Nivelpar,
+          categoria: [],
+          instructor: Instructorpar,
+          resena: Resenapar
+      }
+  
+
+
+
+    
+  }
+
+  // interface Entrada {
+  //   id: number;
+  // }
+
+  // export interface Salida {
+  //   id: number;
+  //   titulo: string;
+  //   duracion: string;
+  //   categorias: CategoriasCurso[],
+  //   nivel: string;
+  //   instructor: string;
+  //   foto: string;
+  // }
+
+  // interface CategoriasCurso {
+  //   id: number;
+  //   name: string;
+  // }
+
+export interface NivelesAll {
+
+  nivel: string
+
+}
+
+export interface InstructorAll {
+
+  nombre: string
+  apellido: string
+
+}
+
+  export interface CursoTipoApplication extends Partial<Curso> {
+    id: number
+    titulo: string
+    duracion: number
+    foto: string
+    nivel?: NivelesAll | number
+    instructor?: InstructorAll | number
+    categoria: []
+}
