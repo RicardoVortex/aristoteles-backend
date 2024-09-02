@@ -1,4 +1,4 @@
-import { CursosEntityApplication } from "../../../domain/entities/cursos.entity";
+import { plantillaGetCurso } from "../../../domain/entities/cursos.entity";
 import { CursoRepository } from "../../../domain/repositories";
 
 import { Controller } from "../../../infraestructure/interfaces/controllers";
@@ -13,7 +13,7 @@ export class GetCursoController implements Controller{
         try{
             const { id } = httpRequest.params;
             const curso = await this.cursoRepository.getOne(id);
-            return HttpHelper.success<CursosEntityApplication>(curso,"Cursos obtenidos correctamente");
+            return HttpHelper.success<plantillaGetCurso>(curso,"Cursos obtenidos correctamente");
         }catch(error){
             return HttpHelper.serverError(error);
         }

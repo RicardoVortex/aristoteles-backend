@@ -1,4 +1,6 @@
+
 import Curso from "../../data/sequelize/models/cursos.model";
+import { DeepWriteable } from "sequelize/types/utils";
 
 
 // export class CursosEntity{
@@ -54,7 +56,6 @@ import Curso from "../../data/sequelize/models/cursos.model";
 
 
 export interface CursosEntityApplication{
-
     id: number,
     titulo: string,
     descripcion: string,
@@ -65,7 +66,6 @@ export interface CursosEntityApplication{
     fecha_inicio: Date,
     resena_id: number,
     foto: string
-  
   }
   
 
@@ -73,147 +73,131 @@ export interface CursosEntityApplication{
 
 
   }
+export interface leer{
 
-interface ListaFavorito{
+readonly dato1: string
+readonly dato2: string
 
-favorito: boolean
-
-}
-
-  interface Modulopar{
-
-    modulo:string
-  }
-
-  interface Userpar{
-
-    
-      names: string,
-      surnames: string,
-      email: string,
-      date_birth: Date,
-      Lista_deseos: ListaFavorito
-  
-  }
-
-  interface Requisitopar{
-
-    
-    names: string,
-    surnames: string,
-    email: string,
-    date_birth: Date,
-    Lista_deseos: ListaFavorito
 
 }
 
 
-interface Nivelpar{
-  names: string,
-  surnames: string,
-  email: string,
-  date_birth: Date,
-  Lista_deseos: ListaFavorito
+export interface Escribir extends DeepWriteable<leer>{
+
+
+
 }
-
-
-
-interface Instructorpar{
-    nombre: string
-    apellido: string
-}
-
-interface Resenapar{
-    resena: string,
-    calificacion: object
-}
-
-
-// interface BodyContent{
-
-//     id: number
-//     titulo: string
-//     descripcion: string
-//     objetivos: string
-//     duracion: number
-//     fecha_inicio: Date
-//     foto: string,
-//     modulo: Modulopar[]
-//     user: Userpar[]
-//     requisito: Requisitopar[]
-//     nivel: Nivelpar
-//     categoria: []
-//     instructor: Instructorpar
-//     resena: Resenapar
-
-// }
-
-
-
-  export interface CursosTiposApplication extends Partial<Curso> {
-
-
-      body?: {
-          id: number,
-          titulo: string,
-          descripcion: string,
-          objetivos: string,
-          duracion: number,
-          fecha_inicio: Date,
-          foto: string,
-          modulo: Modulopar[],
-          user: Userpar[],
-          requisito: Requisitopar[],
-          nivel: Nivelpar,
-          categoria: [],
-          instructor: Instructorpar,
-          resena: Resenapar
-      }
-  
-
-
-
-    
-  }
-
-  // interface Entrada {
-  //   id: number;
-  // }
-
-  // export interface Salida {
-  //   id: number;
-  //   titulo: string;
-  //   duracion: string;
-  //   categorias: CategoriasCurso[],
-  //   nivel: string;
-  //   instructor: string;
-  //   foto: string;
-  // }
-
-  // interface CategoriasCurso {
-  //   id: number;
-  //   name: string;
-  // }
-
 export interface NivelesAll {
-
   nivel: string
+}
+export interface InstructorAll {
+  nombre: string
+  apellido: string
+}
+export interface CursosTiposApplication extends Partial<Curso> {
+    nivel: NivelesAll,
+    instructor: InstructorAll,
+    categoria: []
+}
+export interface plantillasGetsCursos{
+id: number | undefined
+titulo: string | undefined
+descripcion: string | undefined
+objetivos: string | undefined
+duracion: string | undefined
+fecha_inicio: Date | undefined
+foto: string | undefined
+nivel: string
+instructor: string
+categoria: []
+}
+
+
+
+interface NivelPl{
+  nivel: string
+}
+
+interface RequisitoPl{
+
+    id: number
+    requisito: string
 
 }
 
-export interface InstructorAll {
 
-  nombre: string
+interface ModuloPl{
+
+  id: number
+  modulo: string
+
+}
+
+
+interface InstructorPl{
+
+  nombre: string,
   apellido: string
 
 }
 
-  export interface CursoTipoApplication extends Partial<Curso> {
-    id: number
-    titulo: string
-    duracion: number
-    foto: string
-    nivel?: NivelesAll | number
-    instructor?: InstructorAll | number
-    categoria: []
+interface CalificacionPl{
+  calificacion: string
 }
+
+interface ResenaPl{
+  resena: string
+  calificacion: CalificacionPl
+}
+
+interface Lista_deseosPl{
+  favorito: boolean
+}
+
+interface UserPl{
+    names: string
+    surnames:  string
+    email:  string
+    date_birth: Date
+    Lista_deseos: Lista_deseosPl
+}
+
+
+
+export interface CursoTipoApplication extends Partial<Curso> {
+  id: number
+  titulo: string
+  descripcion: string
+  objetivos: string
+  duracion: number
+  fecha_inicio: Date
+  foto: string
+  nivel: NivelPl
+  requisito: RequisitoPl[]
+  modulo: ModuloPl[],
+  instructor: InstructorPl
+  resena: ResenaPl
+  user: UserPl[]
+  categoria: []
+
+}
+
+
+export interface plantillaGetCurso{
+      id: number
+      titulo: string
+      descripcion: string
+      objetivos: string
+      duracion: number
+      fecha_inicio: Date
+      foto: string
+      nivel: string
+      requisito: RequisitoPl[]
+      modulo: ModuloPl[],
+      instructor: InstructorPl
+      resena: ResenaPl
+      user: UserPl[]
+      categoria: []
+}
+
+  

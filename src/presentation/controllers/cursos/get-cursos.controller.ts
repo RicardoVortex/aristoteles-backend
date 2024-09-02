@@ -1,4 +1,4 @@
-import { CursosEntityApplication } from "../../../domain/entities/cursos.entity";
+import { plantillasGetsCursos } from "../../../domain/entities/cursos.entity";
 import { CursoRepository } from "../../../domain/repositories";
 
 import { Controller } from "../../../infraestructure/interfaces/controllers";
@@ -10,7 +10,7 @@ export class GetCursosController implements Controller {
     async  handle(): Promise<HttpResponse> {
         try{
             const cursos = await this.cursoRepository.getAll();
-            return HttpHelper.success<CursosEntityApplication[]>(cursos,"Cursos obtenidos correctamente");
+            return HttpHelper.success<plantillasGetsCursos[]>(cursos,"Cursos obtenidos correctamente");
         }catch(error){
             return HttpHelper.serverError(error);
         }
