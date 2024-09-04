@@ -10,7 +10,7 @@ import User from "../../data/sequelize/models/user.model";
 import Calificacion from "../../data/sequelize/models/calificaciones.model";
 import Requisito from "../../data/sequelize/models/requisito.model";
 import Categoria from "../../data/sequelize/models/categoria.model";
-
+// import { Op } from "sequelize";
 
 
 
@@ -132,6 +132,8 @@ return salida;
     }
     async getAll(): Promise<plantillasGetsCursos[]> {
         const cursos = await Curso.findAll({
+            
+            where: {},
             attributes: [
                 "id",
                 "titulo",
