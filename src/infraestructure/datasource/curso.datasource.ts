@@ -80,7 +80,8 @@ export class CursoDataSource implements CursoRepository {
             {
                 as: "categoria",
                 attributes: ["categoria"],
-                model: Categoria
+                model: Categoria,
+                through: {attributes:[]}
             }
         ], where: { id }});
       
@@ -89,12 +90,23 @@ export class CursoDataSource implements CursoRepository {
 
         const getCurso = curso as CursoTipoApplication
 
+
+        const arregloCategoria = getCurso.categoria.map((valor)=>{return valor.categoria})
+
+        const arregloUser = getCurso.user.map((valor)=>{return {
+            names: valor.names,
+            surnames: valor.surnames,
+            email: valor.email,
+            date_birth: valor.date_birth,
+            favorito: valor.Lista_deseos.favorito,
+        }})
+
 const salida:plantillaGetCurso = {
         id: getCurso.id,
         titulo: getCurso.titulo,
         descripcion: getCurso.descripcion,
         objetivos: getCurso.objetivos,
-        duracion: getCurso.duracion,
+        duracion: `${getCurso.duracion}h`,
         nivel: getCurso.nivel.nivel,
         requisito: getCurso.requisito,
         modulo: getCurso.modulo,
@@ -104,14 +116,12 @@ const salida:plantillaGetCurso = {
         },
         fecha_inicio: getCurso.fecha_inicio,
         resena: {
-            resena: getCurso.resena.resena,
-            calificacion: {
-                calificacion: getCurso.resena.calificacion.calificacion
-            }
+            id: getCurso.resena.resena,
+            calificacion: getCurso.resena.calificacion.calificacion
         },
         foto: getCurso.foto,
-        user: getCurso.user,
-        categoria: getCurso.categoria
+        user: arregloUser,
+        categoria: arregloCategoria
 }
 
 return salida;
