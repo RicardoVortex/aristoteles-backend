@@ -1,6 +1,7 @@
 import { CursosTiposApplication, CursoTipoApplication, plantillasGetsCursos, plantillaGetCurso } from "../../domain/entities";
 import { CursoRepository } from "../../domain/repositories";
 import { CustomError } from "../../domain/errors/custom.error";
+import { GetCursoDto } from "../../domain/dtos/curso.dto";
 import Curso from "../../data/sequelize/models/cursos.model";
 import Nivel from "../../data/sequelize/models/niveles.model";
 import Instructor from "../../data/sequelize/models/instructores.model";
@@ -10,7 +11,8 @@ import User from "../../data/sequelize/models/user.model";
 import Calificacion from "../../data/sequelize/models/calificaciones.model";
 import Requisito from "../../data/sequelize/models/requisito.model";
 import Categoria from "../../data/sequelize/models/categoria.model";
-// import { Op } from "sequelize";
+// import { WhereOptions } from "sequelize";
+import { Op } from "sequelize";
 
 
 
@@ -130,10 +132,35 @@ return salida;
 
 
     }
-    async getAll(): Promise<plantillasGetsCursos[]> {
+    async getAll(filtro:GetCursoDto): Promise<plantillasGetsCursos[]> {
+
+        // if(filtro.categoria == "avanzado"){
+
+        //     console.log("avanzado");
+
+        // }else{
+
+        //     console.log("otro valor");
+
+        // }
+
+
+
+
+// const categorias:GetCursoDto = {
+
+
+    
+// };
+
+
+
+
+        console.log(filtro)
+
         const cursos = await Curso.findAll({
             
-            where: {},
+            where: {titulo: {[Op.like]:`%${filtro.titulo}%`}},
             attributes: [
                 "id",
                 "titulo",
@@ -145,11 +172,13 @@ return salida;
               ],
             include: [
                 {
+                    where: {nivel: {[Op.like]:`%${filtro.nivel}%`}},
                     as: "nivel",
                     attributes: ["nivel"],
                     model: Nivel
                 },
                 {
+                    where: {nombre: {[Op.like]:`%${filtro.instructor}%`}},
                     as: "instructor",
                     attributes: ["nombre", "apellido"],
                     model: Instructor
@@ -157,7 +186,8 @@ return salida;
                 {
                     as: "categoria",
                     attributes: ["categoria"],
-                    model: Categoria
+                    model: Categoria,
+                    where: {categoria: {[Op.like]:`%${filtro.categoria}%`}}
                 }
             ]
           });
