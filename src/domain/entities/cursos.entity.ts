@@ -119,26 +119,26 @@ interface NivelCTA{
 }
 
 interface RequisitoCTA{
-
     id: number
     requisito: string
+}
 
+interface LeccionCTA{
+  id: number,
+  leccion: string
 }
 
 
 interface ModuloCTA{
-
   id: number
   modulo: string
-
+  leccion: LeccionCTA[]
 }
 
 
 interface InstructorCTA{
-
   nombre: string,
   apellido: string
-
 }
 
 interface CalificacionCTA{
@@ -195,12 +195,15 @@ interface RequisitoPl{
 
 }
 
+interface LeccionPL{
+  id: number,
+  leccion: string
+}
 
 interface ModuloPl{
-
   id: number
   modulo: string
-
+  leccion: LeccionPL[]
 }
 
 

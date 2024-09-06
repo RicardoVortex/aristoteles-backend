@@ -11,7 +11,12 @@ export class GetCursosController implements Controller {
         try{
             const { titulo="", categoria="", instructor="", nivel="" } = httpRequest.query;
             const cursos = await this.cursoRepository.getAll({titulo, categoria, instructor, nivel});
-            return HttpHelper.success<plantillasGetsCursos[]>(cursos,"Cursos obtenidos correctamente");
+            if(cursos.length>0){
+                return HttpHelper.success<plantillasGetsCursos[]>(cursos,"Cursos obtenidos correctamente");
+            }
+            else{
+                return HttpHelper.success<plantillasGetsCursos[]>(cursos,"Campos no encontrados");
+            }
         }catch(error){
             return HttpHelper.serverError(error);
         }

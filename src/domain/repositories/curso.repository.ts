@@ -1,6 +1,6 @@
 // import { CreateCursoDto, UpdateCursoDto } from "../dtos";
-import { plantillasGetsCursos, plantillaGetCurso} from "../entities";
-import { GetCursoDto} from "../dtos/curso.dto";
+import { plantillaGetCurso, plantillasGetsCursos } from "../entities";
+import { GetCursoDto } from "../dtos/curso.dto";
 
 
 

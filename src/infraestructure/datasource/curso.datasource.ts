@@ -1,4 +1,4 @@
-import { CursosTiposApplication, CursoTipoApplication, plantillasGetsCursos, plantillaGetCurso } from "../../domain/entities";
+import { CursoTipoApplication, CursosTiposApplication, plantillaGetCurso, plantillasGetsCursos } from "../../domain/entities";
 import { CursoRepository } from "../../domain/repositories";
 import { CustomError } from "../../domain/errors/custom.error";
 import { GetCursoDto } from "../../domain/dtos/curso.dto";
@@ -7,6 +7,7 @@ import Nivel from "../../data/sequelize/models/niveles.model";
 import Instructor from "../../data/sequelize/models/instructores.model";
 import Resena from "../../data/sequelize/models/resena.model";
 import Modulo from "../../data/sequelize/models/modulos.model";
+import Leccion from "../../data/sequelize/models/leccion.model";
 import User from "../../data/sequelize/models/user.model";
 import Calificacion from "../../data/sequelize/models/calificaciones.model";
 import Requisito from "../../data/sequelize/models/requisito.model";
@@ -45,7 +46,13 @@ export class CursoDataSource implements CursoRepository {
                 as: "modulo",
                 attributes: ["id", "modulo"],
                 model: Modulo,
+                through: {attributes:[]},
+                include:[{
+                as: "leccion",
+                attributes: ["id", "leccion"],
+                model: Leccion,
                 through: {attributes:[]}
+                }]
             },
             {
                 as: "instructor",
@@ -94,6 +101,19 @@ export class CursoDataSource implements CursoRepository {
 
 
         const arregloCategoria = getCurso.categoria.map((valor)=>{return valor.categoria})
+        
+        const arregloModulo = getCurso.modulo.map((valor)=>{
+            return {
+                id: valor.id,
+                modulo: valor.modulo,
+                leccion: valor.leccion.map((valor)=>{
+                    return {
+                        id: valor.id,
+                        leccion: valor.leccion
+                    }
+                })
+            }
+        })
 
         const arregloUser = getCurso.user.map((valor)=>{return {
             names: valor.names,
@@ -111,7 +131,7 @@ const salida:plantillaGetCurso = {
         duracion: `${getCurso.duracion}h`,
         nivel: getCurso.nivel.nivel,
         requisito: getCurso.requisito,
-        modulo: getCurso.modulo,
+        modulo: arregloModulo,
         instructor: {
             nombre: getCurso.instructor.nombre,
             apellido: getCurso.instructor.apellido
@@ -133,31 +153,6 @@ return salida;
 
     }
     async getAll(filtro:GetCursoDto): Promise<plantillasGetsCursos[]> {
-
-        // if(filtro.categoria == "avanzado"){
-
-        //     console.log("avanzado");
-
-        // }else{
-
-        //     console.log("otro valor");
-
-        // }
-
-
-
-
-// const categorias:GetCursoDto = {
-
-
-    
-// };
-
-
-
-
-        console.log(filtro)
-
         const cursos = await Curso.findAll({
             
             where: {titulo: {[Op.like]:`%${filtro.titulo}%`}},
@@ -172,7 +167,7 @@ return salida;
               ],
             include: [
                 {
-                    where: {nivel: {[Op.like]:`%${filtro.nivel}%`}},
+                    where: filtro.nivel==="" ? {} : {id: filtro.nivel},
                     as: "nivel",
                     attributes: ["nivel"],
                     model: Nivel
@@ -187,7 +182,7 @@ return salida;
                     as: "categoria",
                     attributes: ["categoria"],
                     model: Categoria,
-                    where: {categoria: {[Op.like]:`%${filtro.categoria}%`}}
+                    where: filtro.categoria==="" ? {} : {id: filtro.categoria}
                 }
             ]
           });
