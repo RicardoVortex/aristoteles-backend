@@ -2,12 +2,12 @@ import { DataTypes, Model, Sequelize } from "sequelize";
 
 import { SequelizeModel } from "../../../infraestructure/types/sequelize";
 
-import { UserEntityApplication } from "../../../domain/entities/user.entity";
+import { UserEntity } from "../../../domain/entities";
 
-interface UserCreationAttributes extends Partial<UserEntityApplication> {}
+interface UserCreationAttributes extends Partial<UserEntity> {}
 
-class User extends Model<UserEntityApplication, UserCreationAttributes> 
-implements UserEntityApplication
+class User extends Model<UserEntity, UserCreationAttributes> 
+implements UserEntity
 {
   public id!: number;
   public names!: string;

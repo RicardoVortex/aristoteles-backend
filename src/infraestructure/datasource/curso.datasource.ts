@@ -181,10 +181,11 @@ return salida;
                     model: Instructor
                 },
                 {
+                    where: filtro.categoria==="" ? {} : {id: filtro.categoria},
                     as: "categoria",
                     attributes: ["categoria"],
                     model: Categoria,
-                    where: filtro.categoria==="" ? {} : {id: filtro.categoria}
+                    through: {attributes:[]}
                 }
             ]
           });

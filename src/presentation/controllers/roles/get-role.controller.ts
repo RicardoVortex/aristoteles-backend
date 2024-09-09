@@ -1,5 +1,4 @@
-// import { RoleEntity } from "../../../domain/entities/role.entity";
-import { RoleEntityApplication } from "../../../domain/entities/role.entity";
+import { RoleEntity } from "../../../domain/entities/role.entity";
 import { RoleRepository } from "../../../domain/repositories/role.repository";
 
 import { HttpHelper } from "../../../shared/helpers";
@@ -19,7 +18,7 @@ export class GetRoleController implements Controller {
 
       const rol = await this.roleRepository.getOne(id);
 
-      return HttpHelper.success<RoleEntityApplication>(rol, "Rol obtenido correctamente");
+      return HttpHelper.success<RoleEntity>(rol, "Rol obtenido correctamente");
     } catch (error) {
       return HttpHelper.serverError(error);
     }

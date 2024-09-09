@@ -1,6 +1,6 @@
 import { ChangePasswordDto, SignTokenDto } from "../dtos";
 
-import { UserEntityApplication } from "../entities";
+import { UserEntity } from "../entities";
 
 export interface AuthRepository {
   signToken(payload: SignTokenDto): string;
@@ -8,6 +8,6 @@ export interface AuthRepository {
   changePassword(changePasswordDto: ChangePasswordDto): Promise<void>;
   refreshToken(token: string): Promise<string>;
   compare(password: string, hash: string): boolean;
-  validateCode(user: UserEntityApplication, code: string): Promise<boolean>;
+  validateCode(user: UserEntity, code: string): Promise<boolean>;
   verifyToken(token: string): SignTokenDto;
 }

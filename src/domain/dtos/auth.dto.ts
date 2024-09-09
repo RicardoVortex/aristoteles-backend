@@ -1,4 +1,4 @@
-import { UserEntityApplication } from "../entities";
+import { UserEntity } from "../entities";
 
 export interface SignTokenDto {
   
@@ -11,7 +11,7 @@ export interface ChangePasswordDto {
 
     readonly token: string,
     readonly newPassword: string,
-    readonly user: UserEntityApplication,
+    readonly user: UserEntity,
     readonly code: string
   
 }

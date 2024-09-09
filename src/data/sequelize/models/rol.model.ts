@@ -2,13 +2,13 @@ import { DataTypes, Model, Sequelize } from "sequelize";
 
 import { SequelizeModel } from "../../../infraestructure/types/sequelize";
 
-import { RoleEntityApplication } from "../../../domain/entities/role.entity";
+import { RoleEntity } from "../../../domain/entities/role.entity";
 
-interface RoleCreationAttributes extends Partial<RoleEntityApplication> {}
+interface RoleCreationAttributes extends Partial<RoleEntity> {}
 
 class Role
-  extends Model<RoleEntityApplication, RoleCreationAttributes>
-  implements RoleEntityApplication
+  extends Model<RoleEntity, RoleCreationAttributes>
+  implements RoleEntity
 {
   public id!: number;
   public name!: string;
