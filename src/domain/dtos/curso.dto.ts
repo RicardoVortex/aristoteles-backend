@@ -40,3 +40,15 @@ export interface UpdateCursoDto {
     readonly foto?: string
 
 }
+
+
+export interface PostFavoritoDto {
+
+    readonly id?: number
+    readonly curso_id: number
+    readonly user_id: number
+    readonly favorito: boolean
+    readonly fecha_cr: Date
+    readonly fecha_at: Date
+
+}

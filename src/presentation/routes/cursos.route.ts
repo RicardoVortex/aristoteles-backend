@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { AdapterRoute } from "../../infraestructure/adapters/express-adapter";
-import { makeGetCursosController, makeGetCursoController } from "../../infraestructure/factory";
+import { makeGetCursosController, makeGetCursoController, makePostFavoritoController } from "../../infraestructure/factory";
 
 
 
@@ -17,7 +17,9 @@ router.get("/", AdapterRoute(makeGetCursosController()));
 
 router.get("/:id", AdapterRoute(makeGetCursoController()));
     
-    
+
+router.post("/favorito", AdapterRoute(makePostFavoritoController()));
+
 
 return router;
 

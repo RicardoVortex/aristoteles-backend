@@ -1,7 +1,8 @@
 import { CursoTipoApplication, CursosTiposApplication, plantillaGetCurso, plantillasGetsCursos } from "../../domain/entities";
+import { ListaDeseosEntityApplication } from "../../domain/entities/lista_deseos.entity";
 import { CursoRepository } from "../../domain/repositories";
 import { CustomError } from "../../domain/errors/custom.error";
-import { GetCursoDto } from "../../domain/dtos/curso.dto";
+import { GetCursoDto, PostFavoritoDto } from "../../domain/dtos/curso.dto";
 import Curso from "../../data/sequelize/models/cursos.model";
 import Nivel from "../../data/sequelize/models/niveles.model";
 import Instructor from "../../data/sequelize/models/instructores.model";
@@ -12,6 +13,7 @@ import User from "../../data/sequelize/models/user.model";
 import Calificacion from "../../data/sequelize/models/calificaciones.model";
 import Requisito from "../../data/sequelize/models/requisito.model";
 import Categoria from "../../data/sequelize/models/categoria.model";
+import Lista_de_Deseos from "../../data/sequelize/models/lista_deseos.model";
 // import { WhereOptions } from "sequelize";
 import { Op } from "sequelize";
 
@@ -215,7 +217,10 @@ return salida;
 return arregloCursos;
 
 
+}
 
+async createFavorito(favorito:PostFavoritoDto): Promise<ListaDeseosEntityApplication> {
+        const Lista_Deseos = await Lista_de_Deseos.create(favorito);
+        return Lista_Deseos;
     }
-
 }
