@@ -26,7 +26,7 @@
     
 export interface ListaDeseosEntityApplication{
 
-    id: number,
+    id: number | undefined,
     curso_id: number,
     user_id: number,
     favorito: boolean,

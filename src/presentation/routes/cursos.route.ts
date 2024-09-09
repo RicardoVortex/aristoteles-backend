@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { AdapterRoute } from "../../infraestructure/adapters/express-adapter";
 import { makeGetCursosController, makeGetCursoController, makePostFavoritoController } from "../../infraestructure/factory";
-
+import { AuthHandler } from "../middlewares/auth.handler";
 
 
 export class CursoRoutes{
@@ -18,7 +18,7 @@ router.get("/", AdapterRoute(makeGetCursosController()));
 router.get("/:id", AdapterRoute(makeGetCursoController()));
     
 
-router.post("/favorito", AdapterRoute(makePostFavoritoController()));
+router.post("/favorito",AuthHandler.checkToken, AuthHandler.checkRoles(10), AdapterRoute(makePostFavoritoController()));
 
 
 return router;

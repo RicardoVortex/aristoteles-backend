@@ -45,21 +45,39 @@ export class EmailDataSource implements EmailRepository {
       return console.log("Correo produccion");
     }
 
+    // const transporter = nodemailer.createTransport({
+    //   host: "smtp.mailtrap.io",
+    //   port: 2525,
+    //   auth: {
+    //     user: envs.EMAILTRAP_USER,
+    //     pass: envs.EMAILTRAP_PASS,
+    //   },
+    // });
+
     const transporter = nodemailer.createTransport({
-      host: "smtp.mailtrap.io",
-      port: 2525,
+      host: "smtp.ethereal.email",
+      port: 587,
       auth: {
         user: envs.EMAILTRAP_USER,
         pass: envs.EMAILTRAP_PASS,
       },
     });
 
+    // await transporter.sendMail({
+    //   from: "manueldazafon@gmail.com",
+    //   to: to,
+    //   subject,
+    //   html,
+    //   text: htmlToText(html),
+    // });
+
     await transporter.sendMail({
-      from: "manueldazafon@gmail.com",
+      from: envs.EMAILTRAP_USER,
       to: to,
       subject,
       html,
       text: htmlToText(html),
     });
+
   }
 }

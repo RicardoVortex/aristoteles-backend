@@ -33,6 +33,7 @@ export class UserDataSource implements UserRepository {
         "date_birth",
         "code",
         "recoveryToken",
+        "role_id",
       ],
       include: {
         as: "role",
@@ -56,6 +57,7 @@ export class UserDataSource implements UserRepository {
         "email",
         "date_birth",
         "password",
+        "role_id",
       ],
       include: {
         as: "role",

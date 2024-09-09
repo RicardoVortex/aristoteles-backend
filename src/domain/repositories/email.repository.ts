@@ -2,8 +2,8 @@ import { SendEmailOptionsDto, SendRecoveryDto } from "../dtos";
 
 import { UserEntity } from "../entities/user.entity";
 
-export interface EmailRepository {
-  notifyUser(user: UserEntity): Promise<void>;
-  notifyRecoveryPassword(data: SendRecoveryDto): Promise<void>;
-  sendMail(data: SendEmailOptionsDto): Promise<void>;
+export abstract class EmailRepository {
+  abstract notifyUser(user: UserEntity): Promise<void>;
+  abstract notifyRecoveryPassword(data: SendRecoveryDto): Promise<void>;
+  abstract sendMail(data: SendEmailOptionsDto): Promise<void>;
 }

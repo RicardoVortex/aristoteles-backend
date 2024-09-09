@@ -12,6 +12,7 @@ import {
   UserRepository,
   EmailRepository,
 } from "../../../domain/repositories";
+import { envs } from "../../../config";
 
 export class RecoveryPasswordController implements Controller {
   constructor(
@@ -32,12 +33,27 @@ export class RecoveryPasswordController implements Controller {
 
       const url = `http://localhost:3000/recovery?token=${token}`;
 
+      // await this.emailRepository.notifyRecoveryPassword({
+      //   name: `${user.names} ${user.surnames}`,
+      //   url,
+      //   to: user.email,
+      //   code,
+      // });
+
+      // await this.emailRepository.notifyRecoveryPassword({
+      //   name: `${user.names} ${user.surnames}`,
+      //   url,
+      //   to: user.email,
+      //   code,
+      // });
+
       await this.emailRepository.notifyRecoveryPassword({
         name: `${user.names} ${user.surnames}`,
         url,
-        to: user.email,
+        to: envs.EMAILTRAP_USER,
         code,
       });
+
 
       return HttpHelper.success({}, "Correo enviado");
     } catch (error) {
