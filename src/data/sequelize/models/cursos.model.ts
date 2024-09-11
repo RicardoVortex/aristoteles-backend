@@ -16,6 +16,7 @@ class Cursos extends Model<CursosEntityApplication, CrearCurso> implements Curso
     public instructor_id!: number
     public fecha_inicio!: Date
     public resena_id!: number
+    public cupos!: number
     public foto!: string
 
 
@@ -33,6 +34,13 @@ class Cursos extends Model<CursosEntityApplication, CrearCurso> implements Curso
             foreignKey: "curso_id",
             otherKey: "user_id"
           }
+        );
+        Cursos.belongsToMany(models.User, {
+          as: "userInscritos",
+          through: "Inscritos",
+          foreignKey: "curso_id",
+          otherKey: "user_id"
+        }
         );
         Cursos.belongsToMany(models.Requisitos, {
           as: "requisito",
@@ -107,6 +115,10 @@ class Cursos extends Model<CursosEntityApplication, CrearCurso> implements Curso
                 allowNull: false,
                 unique: true,
             },
+            cupos: {
+              type: DataTypes.INTEGER,
+              allowNull: false,
+          },
             foto: {
                 type: DataTypes.STRING,
                 allowNull: false

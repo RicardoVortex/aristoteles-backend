@@ -143,6 +143,7 @@ const salida:plantillaGetCurso = {
             id: getCurso.resena.resena,
             calificacion: getCurso.resena.calificacion.calificacion
         },
+        cupos: getCurso.cupos,
         foto: getCurso.foto,
         user: arregloUser,
         categoria: arregloCategoria
@@ -205,6 +206,7 @@ const salida:plantillasGetsCursos = {
     objetivos: getCursos.objetivos,
     duracion: getCursos.foto,
     fecha_inicio: getCursos.fecha_inicio,
+    cupos: getCursos.cupos,
     foto: getCursos.foto,
     nivel: getCursos.nivel.nivel,
     instructor: `${getCursos.instructor.nombre} ${getCursos.instructor.apellido}`,

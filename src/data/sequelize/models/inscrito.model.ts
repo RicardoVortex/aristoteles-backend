@@ -1,21 +1,21 @@
 import {DataTypes, Model, Sequelize} from "sequelize";
-import {ListaDeseosEntityApplication} from "../../../domain/entities/lista_deseos.entity";
+import {InscritoEntityApplication} from "../../../domain/entities/inscrito.entity";
 
-interface CrearListaDeseos extends Partial<ListaDeseosEntityApplication>{}
+interface CrearInscritos extends Partial<InscritoEntityApplication>{}
 
-class ListaDeseos extends Model<ListaDeseosEntityApplication, CrearListaDeseos> implements ListaDeseosEntityApplication {
+class Inscritos extends Model<InscritoEntityApplication, CrearInscritos> implements InscritoEntityApplication {
 
 
     public id!: number
     public curso_id!: number
     public user_id!: number
-    public favorito!: boolean
+    public inscrito!: boolean
     public fecha_cr!: Date
     public fecha_at!: Date
 
 
     static initModel(sequelize: Sequelize) {
-        ListaDeseos.init(
+        Inscritos.init(
           {
             id: {
               type: DataTypes.INTEGER,
@@ -44,7 +44,7 @@ class ListaDeseos extends Model<ListaDeseosEntityApplication, CrearListaDeseos> 
               onUpdate: "CASCADE",
               onDelete: "SET NULL"
               },
-              favorito: {
+              inscrito: {
                 type: DataTypes.BOOLEAN,
                 allowNull: false
               },
@@ -60,7 +60,7 @@ class ListaDeseos extends Model<ListaDeseosEntityApplication, CrearListaDeseos> 
           },
           {
             sequelize,
-            modelName: "Lista_deseos",
+            modelName: "Inscritos",
           }
         );
       }
@@ -68,4 +68,4 @@ class ListaDeseos extends Model<ListaDeseosEntityApplication, CrearListaDeseos> 
 
 }
 
-export default ListaDeseos;
+export default Inscritos;

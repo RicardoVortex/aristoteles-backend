@@ -16,6 +16,7 @@ import { DeepWriteable } from "sequelize/types/utils";
 //         public instructor_id: number,
 //         public fecha_inicio: Date,
 //         public resena_id: number,
+//         public cupos: number,
 //         public foto: string
 //      ){}
     
@@ -32,6 +33,7 @@ import { DeepWriteable } from "sequelize/types/utils";
 //         instructor_id,
 //         fecha_inicio,
 //         resena_id,
+//         cupos,
 //         foto
 //     } = object;
     
@@ -46,6 +48,7 @@ import { DeepWriteable } from "sequelize/types/utils";
 //         instructor_id,
 //         fecha_inicio,
 //         resena_id,
+//         cupos,
 //         foto
 //     );
         
@@ -65,6 +68,7 @@ export interface CursosEntityApplication{
     instructor_id: number,
     fecha_inicio: Date,
     resena_id: number,
+    cupos: number,
     foto: string
   }
   
@@ -106,6 +110,7 @@ descripcion: string | undefined
 objetivos: string | undefined
 duracion: string | undefined
 fecha_inicio: Date | undefined
+cupos: number | undefined
 foto: string | undefined
 nivel: string
 instructor: string
@@ -260,6 +265,7 @@ export interface plantillaGetCurso{
       objetivos: string | undefined
       duracion: string | undefined
       fecha_inicio: Date | undefined
+      cupos: number | undefined
       foto: string | undefined
       nivel: string
       requisito: RequisitoPl[]

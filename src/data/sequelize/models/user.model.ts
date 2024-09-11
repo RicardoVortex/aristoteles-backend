@@ -30,6 +30,13 @@ implements UserEntity
       foreignKey: "user_id"
     }
   );
+    User.belongsToMany(models.Cursos, {
+      as: "cursoInscritos",
+      through: "Inscritos",
+      foreignKey: "user_id",
+      otherKey: "curso_id"
+    }
+  );
   }
 
   static initModel(sequelize: Sequelize) {
