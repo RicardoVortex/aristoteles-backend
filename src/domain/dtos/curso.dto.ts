@@ -46,8 +46,20 @@ export interface PostFavoritoDto {
 
     readonly id?: number
     readonly curso_id: number
-    readonly user_id: number
+    readonly user_id: number | undefined
     readonly favorito: boolean
+    readonly fecha_cr: Date
+    readonly fecha_at: Date
+
+}
+
+
+export interface PostInscritoDto {
+
+    readonly id?: number
+    readonly curso_id: number
+    readonly user_id: number | undefined
+    readonly inscrito: boolean
     readonly fecha_cr: Date
     readonly fecha_at: Date
 

@@ -42,17 +42,17 @@ export class UserEntity {
 }
 
 
-// export interface UserEntityApplication{
+export interface UserEntityApplication{
 
-//   id: number,
-//   names: string,
-//   surnames: string,
-//   email: string,
-//   date_birth: Date | null,
-//   role_id: number,
-//   code: string | null,
-//   recoveryToken: string | null,
-//   last_login: Date | null,
-//   password?: string
+  id: number,
+  names: string,
+  surnames: string,
+  email: string,
+  date_birth: Date | null,
+  role_id: number,
+  code: string | null,
+  recoveryToken: string | null,
+  last_login: Date | null,
+  password?: string
 
-// }
+}

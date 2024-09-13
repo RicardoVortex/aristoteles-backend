@@ -17,7 +17,7 @@ class Cursos extends Model<CursosEntityApplication, CrearCurso> implements Curso
     public fecha_inicio!: Date
     public resena_id!: number
     public cupos!: number
-    public foto!: string
+    public foto_id!: number
 
 
     static associate(models: { [key: string]: SequelizeModel }) {
@@ -68,7 +68,10 @@ class Cursos extends Model<CursosEntityApplication, CrearCurso> implements Curso
             as: "resena"
           }
         );
-
+        Cursos.belongsTo(models.Fotos, {
+          as: "foto"
+        }
+      );
       }
     
 
@@ -118,10 +121,11 @@ class Cursos extends Model<CursosEntityApplication, CrearCurso> implements Curso
             cupos: {
               type: DataTypes.INTEGER,
               allowNull: false,
-          },
-            foto: {
-                type: DataTypes.STRING,
-                allowNull: false
+            },
+            foto_id: {
+                type: DataTypes.INTEGER,
+                allowNull: false,
+                unique: true,
             }
           },
           {

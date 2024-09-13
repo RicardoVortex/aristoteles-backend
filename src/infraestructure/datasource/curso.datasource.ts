@@ -1,10 +1,10 @@
-import { CursoTipoApplication, CursosTiposApplication, plantillaGetCurso, plantillasGetsCursos } from "../../domain/entities";
-import { ListaDeseosEntityApplication } from "../../domain/entities/lista_deseos.entity";
+import { CursoTipoApplication, plantillaGetCurso, CursosTiposApplication, plantillasGetsCursos, ListaDeseosEntityApplication, InscritoEntityApplication } from "../../domain/entities";
 import { CursoRepository } from "../../domain/repositories";
 import { CustomError } from "../../domain/errors/custom.error";
-import { GetCursoDto, PostFavoritoDto } from "../../domain/dtos/curso.dto";
+import { GetCursoDto, PostFavoritoDto, PostInscritoDto } from "../../domain/dtos/curso.dto";
 import Curso from "../../data/sequelize/models/cursos.model";
 import Nivel from "../../data/sequelize/models/niveles.model";
+import Foto from "../../data/sequelize/models/foto.model";
 import Instructor from "../../data/sequelize/models/instructores.model";
 import Resena from "../../data/sequelize/models/resena.model";
 import Modulo from "../../data/sequelize/models/modulos.model";
@@ -14,6 +14,7 @@ import Calificacion from "../../data/sequelize/models/calificaciones.model";
 import Requisito from "../../data/sequelize/models/requisito.model";
 import Categoria from "../../data/sequelize/models/categoria.model";
 import Lista_de_Deseos from "../../data/sequelize/models/lista_deseos.model";
+import Inscrito from "../../data/sequelize/models/inscrito.model";
 // import { WhereOptions } from "sequelize";
 import { Op } from "sequelize";
 
@@ -29,14 +30,18 @@ export class CursoDataSource implements CursoRepository {
             "descripcion",
             "objetivos",
             "duracion",
-            "fecha_inicio",
-            "foto"
+            "fecha_inicio"
           ],
           include: [
             {
                 as: "nivel",
                 attributes: ["nivel"],
                 model: Nivel
+            },
+            {
+                as: "foto",
+                attributes: ["url", "public_id"],
+                model: Foto
             },
             {
                 as: "requisito",
@@ -96,6 +101,8 @@ export class CursoDataSource implements CursoRepository {
             }
         ], where: { id }});
       
+
+        
         if (!curso) throw CustomError.badRequest("El Curso no Existe");
 
 
@@ -151,7 +158,7 @@ const salida:plantillaGetCurso = {
 
 return salida;
 
-//         return curso;
+        // return curso;
 
 
     }
@@ -165,8 +172,7 @@ return salida;
                 "descripcion",
                 "objetivos",
                 "duracion",
-                "fecha_inicio",
-                "foto"
+                "fecha_inicio"
               ],
             include: [
                 {
@@ -174,6 +180,11 @@ return salida;
                     as: "nivel",
                     attributes: ["nivel"],
                     model: Nivel
+                },
+                {
+                    as: "foto",
+                    attributes: ["url", "public_id"],
+                    model: Foto
                 },
                 {
                     where: {nombre: {[Op.like]:`%${filtro.instructor}%`}},
@@ -204,7 +215,7 @@ const salida:plantillasGetsCursos = {
     titulo: getCursos.titulo,
     descripcion: getCursos.descripcion,
     objetivos: getCursos.objetivos,
-    duracion: getCursos.foto,
+    duracion: `${getCursos.duracion}h`,
     fecha_inicio: getCursos.fecha_inicio,
     cupos: getCursos.cupos,
     foto: getCursos.foto,
@@ -226,4 +237,39 @@ async createFavorito(favorito:PostFavoritoDto): Promise<ListaDeseosEntityApplica
         const Lista_Deseos = await Lista_de_Deseos.create(favorito);
         return Lista_Deseos;
     }
+
+
+async createInscrito(inscritoDto: PostInscritoDto): Promise<InscritoEntityApplication | undefined> {
+
+        const conteo = await Curso.findOne({where: {id: inscritoDto.curso_id}})
+        console.log(inscritoDto);
+        console.log(conteo?.cupos);
+        const Inscritos = await Inscrito.findAll({where: {[Op.and]: [{inscrito: true}, {curso_id: inscritoDto.curso_id}]}});
+        // console.log(Inscritos);
+        console.log(Inscritos.length);
+
+if(conteo?.cupos){
+
+    if(Inscritos.length<conteo?.cupos){
+
+
+const fecha1 = new Date();
+
+if(conteo.fecha_inicio>fecha1){
+
+    const inscripcion = await Inscrito.create(inscritoDto);
+            console.log(inscripcion);
+    return inscripcion;
+
+}else{
+    throw new Error("paso la fecha de inscripcion");
+}
+        
+    }else{
+        throw new Error("cupos completos");
+    }
+
+}
+
+    };
 }

@@ -1,5 +1,6 @@
 export * from "./calificacion.entity";
 export * from "./lista_deseos.entity";
+export * from "./inscrito.entity";
 export * from "./cursos.entity";
 export * from "./instructor.entity";
 export * from "./leccion.entity";

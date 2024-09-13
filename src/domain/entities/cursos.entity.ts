@@ -1,6 +1,5 @@
 
 import Curso from "../../data/sequelize/models/cursos.model";
-import { DeepWriteable } from "sequelize/types/utils";
 
 
 // export class CursosEntity{
@@ -58,6 +57,8 @@ import { DeepWriteable } from "sequelize/types/utils";
 //     }
 
 
+
+
 export interface CursosEntityApplication{
     id: number,
     titulo: string,
@@ -69,28 +70,9 @@ export interface CursosEntityApplication{
     fecha_inicio: Date,
     resena_id: number,
     cupos: number,
-    foto: string
+    foto_id: number
   }
-  
 
-  export interface CursosSalidaApplication extends Omit<CursosEntityApplication, "instructor_id">{
-
-
-  }
-export interface leer{
-
-readonly dato1: string
-readonly dato2: string
-
-
-}
-
-
-export interface Escribir extends DeepWriteable<leer>{
-
-
-
-}
 export interface NivelesAll{
   nivel: string
 }
@@ -98,10 +80,18 @@ export interface InstructorAll{
   nombre: string
   apellido: string
 }
+
+export interface fotoAll{
+  url: string
+  public_id: string
+}
+
+
 export interface CursosTiposApplication extends Partial<Curso>{
     nivel: NivelesAll,
     instructor: InstructorAll,
     categoria: []
+    foto: fotoAll
 }
 export interface plantillasGetsCursos{
 id: number | undefined
@@ -111,7 +101,7 @@ objetivos: string | undefined
 duracion: string | undefined
 fecha_inicio: Date | undefined
 cupos: number | undefined
-foto: string | undefined
+foto: fotoAll
 nivel: string
 instructor: string
 categoria: []
@@ -180,6 +170,12 @@ interface CategiriaCTA{
     Categorias_cursos: Categorias_cursosCTA
 }
 
+
+interface fotoCTA{
+  url: string
+  public_id: string
+}
+
 export interface CursoTipoApplication extends Partial<Curso>{
 
   nivel: NivelCTA
@@ -189,6 +185,7 @@ export interface CursoTipoApplication extends Partial<Curso>{
   resena: ResenaCTA
   user: UserCTA[]
   categoria: CategiriaCTA[]
+  foto: fotoCTA
 
 }
 
@@ -219,19 +216,11 @@ interface InstructorPl{
 
 }
 
-// interface CalificacionPl{
-//   calificacion: string
-// }
-
 interface ResenaPl{
   id: string
-  // calificacion: CalificacionPl
   calificacion: string
 }
 
-// interface Lista_deseosPl{
-//   favorito: boolean
-// }
 
 interface UserPl{
     names: string
@@ -241,20 +230,11 @@ interface UserPl{
     favorito: boolean
 }
 
-// interface Categorias_cursosPl{
-//   id: number
-//   curso_id: number
-//   categoria_id: number
-//   createdAt: Date
-//   updatedAt: Date
-// }
 
-
-// interface CategiriaPl{
-//   categoria: string
-//   Categorias_cursos: Categorias_cursosPl
-// }
-
+interface fotoPL{
+  url: string
+  public_id: string
+}
 
 
 
@@ -266,7 +246,7 @@ export interface plantillaGetCurso{
       duracion: string | undefined
       fecha_inicio: Date | undefined
       cupos: number | undefined
-      foto: string | undefined
+      foto: fotoPL
       nivel: string
       requisito: RequisitoPl[]
       modulo: ModuloPl[],
