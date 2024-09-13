@@ -1,6 +1,6 @@
 import bcrypt from "bcrypt";
 
-import { UserEntity } from "../../domain/entities/user.entity";
+import { UserEntityApplication } from "../../domain/entities/user.entity";
 import { UserRepository } from "../../domain/repositories/user.repository";
 import { CustomError } from "../../domain/errors/custom.error";
 import { CreateUserDto, UpdateUserDto } from "../../domain/dtos/user.dto";
@@ -9,13 +9,14 @@ import User from "../../data/sequelize/models/user.model";
 import Role from "../../data/sequelize/models/rol.model";
 
 export class UserDataSource implements UserRepository {
-  async create(userDto: CreateUserDto): Promise<UserEntity> {
+  async create(userDto: CreateUserDto): Promise<UserEntityApplication> {
     const passwordHash: string = await bcrypt.hash(userDto.password, 10);
 
     try {
       const user = await User.create({ ...userDto, password: passwordHash });
 
-      const { password, ...userCreated } = UserEntity.fromObject(user);
+      // const { password, ...userCreated } = UserEntity.fromObject(user);
+      const { password, ...userCreated } = user;
 
       return userCreated;
     } catch (error) {
@@ -23,7 +24,7 @@ export class UserDataSource implements UserRepository {
     }
   }
 
-  async getOne(id: number): Promise<UserEntity> {
+  async getOne(id: number): Promise<UserEntityApplication> {
     const user = await User.findOne({
       attributes: [
         "id",
@@ -45,10 +46,11 @@ export class UserDataSource implements UserRepository {
 
     if (!user) throw CustomError.badRequest("El Usuario no Existe");
 
-    return UserEntity.fromObject(user);
+    // return UserEntity.fromObject(user);
+    return user;
   }
 
-  async getByEmail(email: string): Promise<UserEntity> {
+  async getByEmail(email: string): Promise<UserEntityApplication> {
     const user = await User.findOne({
       attributes: [
         "id",
@@ -69,10 +71,11 @@ export class UserDataSource implements UserRepository {
 
     if (!user) throw CustomError.badRequest("El Usuario no Existe");
 
-    return UserEntity.fromObject(user);
+    // return UserEntity.fromObject(user);
+    return user;
   }
 
-  async getAll(): Promise<UserEntity[]> {
+  async getAll(): Promise<UserEntityApplication[]> {
     const users = await User.findAll({
       attributes: [
         "id",
@@ -89,10 +92,11 @@ export class UserDataSource implements UserRepository {
       },
     });
 
-    return users.map((user) => UserEntity.fromObject(user));
+    // return users.map((user) => UserEntity.fromObject(user));
+    return users.map((user) => user);
   }
 
-  async update(id: number, change: UpdateUserDto): Promise<UserEntity> {
+  async update(id: number, change: UpdateUserDto): Promise<UserEntityApplication> {
     const { email, password, role_id, ...dataUpdate } = change;
 
     try {

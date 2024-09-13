@@ -1,4 +1,4 @@
-import { RoleEntity } from "../../../domain/entities/role.entity";
+import { RoleEntityApplication } from "../../../domain/entities/role.entity";
 import { RoleRepository } from "../../../domain/repositories/role.repository";
 
 import { HttpHelper } from "../../../shared/helpers";
@@ -13,7 +13,7 @@ export class GetRolesController implements Controller {
     try {
       const roles = await this.roleRepository.getAll();
 
-      return HttpHelper.success<RoleEntity[]>(
+      return HttpHelper.success<RoleEntityApplication[]>(
         roles,
         "Roles obtenidos correctamente"
       );

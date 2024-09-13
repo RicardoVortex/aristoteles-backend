@@ -1,12 +1,22 @@
 import { CreateUserDto, UpdateUserDto } from "../dtos";
 
-import { UserEntity } from "../entities/user.entity";
+import { UserEntityApplication } from "../entities/user.entity";
 
-export abstract class UserRepository {
-  abstract create(userDto: CreateUserDto): Promise<UserEntity>;
-  abstract getOne(id: number): Promise<UserEntity>;
-  abstract getByEmail(email: string): Promise<UserEntity>;
-  abstract getAll(): Promise<UserEntity[]>;
-  abstract update(id: number, change: UpdateUserDto): Promise<UserEntity>;
-  abstract delete(id: number): Promise<number>;
+// export abstract class UserRepository {
+//   abstract create(userDto: CreateUserDto): Promise<UserEntityApplication>;
+//   abstract getOne(id: number): Promise<UserEntityApplication>;
+//   abstract getByEmail(email: string): Promise<UserEntityApplication>;
+//   abstract getAll(): Promise<UserEntityApplication[]>;
+//   abstract update(id: number, change: UpdateUserDto): Promise<UserEntityApplication>;
+//   abstract delete(id: number): Promise<number>;
+// }
+
+
+export interface UserRepository {
+  create(userDto: CreateUserDto): Promise<UserEntityApplication>;
+  getOne(id: number): Promise<UserEntityApplication>;
+  getByEmail(email: string): Promise<UserEntityApplication>;
+  getAll(): Promise<UserEntityApplication[]>;
+  update(id: number, change: UpdateUserDto): Promise<UserEntityApplication>;
+  delete(id: number): Promise<number>;
 }

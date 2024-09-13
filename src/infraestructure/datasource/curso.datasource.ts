@@ -242,33 +242,21 @@ async createFavorito(favorito:PostFavoritoDto): Promise<ListaDeseosEntityApplica
 async createInscrito(inscritoDto: PostInscritoDto): Promise<InscritoEntityApplication | undefined> {
 
         const conteo = await Curso.findOne({where: {id: inscritoDto.curso_id}})
-        console.log(inscritoDto);
-        console.log(conteo?.cupos);
         const Inscritos = await Inscrito.findAll({where: {[Op.and]: [{inscrito: true}, {curso_id: inscritoDto.curso_id}]}});
-        // console.log(Inscritos);
-        console.log(Inscritos.length);
 
 if(conteo?.cupos){
 
     if(Inscritos.length<conteo?.cupos){
-
-
-const fecha1 = new Date();
-
-if(conteo.fecha_inicio>fecha1){
-
-    const inscripcion = await Inscrito.create(inscritoDto);
-            console.log(inscripcion);
-    return inscripcion;
-
-}else{
-    throw new Error("paso la fecha de inscripcion");
-}
-        
-    }else{
-        throw new Error("cupos completos");
-    }
-
+        const fecha1 = new Date();
+        if(conteo.fecha_inicio>fecha1){
+            const inscripcion = await Inscrito.create(inscritoDto);
+            return inscripcion;
+        }else{
+            throw CustomError.badRequest("paso la fecha de inscripcion");
+        }
+        }else{
+            throw CustomError.badRequest("cupos completos");
+        }
 }
 
     };

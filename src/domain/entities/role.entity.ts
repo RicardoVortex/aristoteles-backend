@@ -1,21 +1,21 @@
-export class RoleEntity {
-  constructor(
-    public id: number,
-    public name: string,
-    public description?: string | null
-  ) {}
+// export class RoleEntity {
+//   constructor(
+//     public id: number,
+//     public name: string,
+//     public description?: string | null
+//   ) {}
 
-  static fromObject(object: { [key: string]: any }): RoleEntity {
-    const { id, name, description } = object;
+//   static fromObject(object: { [key: string]: any }): RoleEntity {
+//     const { id, name, description } = object;
 
-    return new RoleEntity(id, name, description);
-  }
-}
-
-// export interface RoleEntityApplication{
-
-//   id: number,
-//   name: string,
-//   description?: string | null
-
+//     return new RoleEntity(id, name, description);
+//   }
 // }
+
+export interface RoleEntityApplication{
+
+  id: number,
+  name: string,
+  description?: string | null
+
+}

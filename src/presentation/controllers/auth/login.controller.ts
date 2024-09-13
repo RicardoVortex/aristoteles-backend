@@ -8,7 +8,7 @@ import { HttpHelper } from "../../../shared/helpers/http-helper";
 
 import { AuthRepository, UserRepository } from "../../../domain/repositories";
 import { CustomError } from "../../../domain/errors/custom.error";
-import { UserEntity } from "../../../domain/entities";
+import { UserLoginOutput } from "../../../domain/entities";
 
 export class LoginUserController implements Controller {
   constructor(
@@ -38,9 +38,13 @@ export class LoginUserController implements Controller {
 
       await this.userRepository.update(user.id, { last_login: new Date() });
 
-      const { password, ...userLogin } = UserEntity.fromObject(user);
+      // const { password, ...userLogin } = UserEntity.fromObject(user);
+      const { password, ...userLogin } = user;
 
-      return HttpHelper.success({ ...userLogin, token }, "Login exitoso");
+      const usertipo = userLogin as UserLoginOutput;
+
+      // return HttpHelper.success({ ...userLogin, token }, "Login exitoso");
+      return HttpHelper.success({userLogin: usertipo.dataValues, token }, "Login exitoso");
     } catch (error) {
       console.log(
         "🚀 ~ file: login.controller.ts:56 ~ LoginUser ~ handle ~ error:",

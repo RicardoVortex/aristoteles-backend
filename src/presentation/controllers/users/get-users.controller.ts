@@ -1,4 +1,4 @@
-import { UserEntity } from "../../../domain/entities/user.entity";
+import { UserEntityApplication } from "../../../domain/entities/user.entity";
 import { UserRepository } from "../../../domain/repositories/user.repository";
 
 import { Controller } from "../../../infraestructure/interfaces/controllers";
@@ -13,7 +13,7 @@ export class GetUsersController implements Controller {
     try {
       const users = await this.userRepository.getAll();
 
-      return HttpHelper.success<UserEntity[]>(
+      return HttpHelper.success<UserEntityApplication[]>(
         users,
         "Usuarios obtenidos correctamente"
       );
