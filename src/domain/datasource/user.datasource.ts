@@ -1,9 +1,9 @@
 import bcrypt from "bcrypt";
 
-import { UserEntity } from "../../domain/entities/user.entity";
-import { UserRepository } from "../../domain/repositories/user.repository";
-import { CustomError } from "../../domain/errors/custom.error";
-import { CreateUserDto, UpdateUserDto } from "../../domain/dtos/user.dto";
+import { UserEntity } from "../entities/user.entity";
+import { UserRepository } from "../repositories/user.repository";
+import { CustomError } from "../errors/custom.error";
+import { CreateUserDto, UpdateUserDto } from "../dtos/user.dto";
 
 import User from "../../data/sequelize/models/user.model";
 import Role from "../../data/sequelize/models/rol.model";

@@ -1,6 +1,6 @@
 import { RegisterUserController } from "../../../presentation/controllers/users";
 
-import { EmailDataSource, UserDataSource } from "../../datasource";
+import { EmailDataSource, UserDataSource } from "../../../domain/datasource";
 
 export const makeRegisterUserController = (): RegisterUserController => {
   const userRepository = new UserDataSource();

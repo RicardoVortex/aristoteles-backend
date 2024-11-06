@@ -1,9 +1,9 @@
 import Role from "../../data/sequelize/models/rol.model";
 
-import { CreateRoleDto, UpdateRoleDto } from "../../domain/dtos";
-import { RoleEntity } from "../../domain/entities";
-import { CustomError } from "../../domain/errors/custom.error";
-import { RoleRepository } from "../../domain/repositories";
+import { CreateRoleDto, UpdateRoleDto } from "../dtos";
+import { RoleEntity } from "../entities";
+import { CustomError } from "../errors/custom.error";
+import { RoleRepository } from "../repositories";
 
 export class RoleDataSource implements RoleRepository {
   async create(roleDto: CreateRoleDto): Promise<RoleEntity> {

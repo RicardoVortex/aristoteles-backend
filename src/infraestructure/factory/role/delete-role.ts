@@ -1,6 +1,6 @@
 import { DeleteRoleController } from "../../../presentation/controllers/roles";
 
-import { RoleDataSource } from "../../datasource";
+import { RoleDataSource } from "../../../domain/datasource";
 
 export const makeDeleteRoleController = (): DeleteRoleController => {
   const roleRepository = new RoleDataSource();

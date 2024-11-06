@@ -1,6 +1,6 @@
 import { UpdateRoleController } from "../../../presentation/controllers/roles";
 
-import { RoleDataSource } from "../../datasource";
+import { RoleDataSource } from "../../../domain/datasource";
 
 export const makeUpdateRoleController = (): UpdateRoleController => {
   const roleRepository = new RoleDataSource();

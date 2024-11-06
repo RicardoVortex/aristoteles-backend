@@ -6,7 +6,7 @@ import { UserEntity } from "../../domain/entities";
 import {
   AuthDataSource,
   UserDataSource,
-} from "../../infraestructure/datasource";
+} from "../../domain/datasource";
 import { CustomRequest } from "../../infraestructure/interfaces/http-interface";
 
 export class AuthHandler {

@@ -4,7 +4,7 @@ import {
   AuthDataSource,
   EmailDataSource,
   UserDataSource,
-} from "../../datasource";
+} from "../../../domain/datasource";
 
 export const makeRecoveryPasswordController =
   (): RecoveryPasswordController => {

@@ -3,10 +3,10 @@ import pug from "pug";
 import path from "path";
 import { htmlToText } from "html-to-text";
 
-import { EmailRepository } from "../../domain/repositories/email.repository";
+import { EmailRepository } from "../repositories/email.repository";
 
-import { UserEntity } from "../../domain/entities/user.entity";
-import { SendEmailOptionsDto, SendRecoveryDto } from "../../domain/dtos";
+import { UserEntity } from "../entities/user.entity";
+import { SendEmailOptionsDto, SendRecoveryDto } from "../dtos";
 
 import { envs } from "../../config";
 

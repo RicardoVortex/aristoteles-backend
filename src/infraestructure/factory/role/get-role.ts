@@ -1,6 +1,6 @@
 import { GetRoleController } from "../../../presentation/controllers/roles";
 
-import { RoleDataSource } from "../../datasource";
+import { RoleDataSource } from "../../../domain/datasource";
 
 export const makeDetailRoleController = (): GetRoleController => {
   const roleRepository = new RoleDataSource();

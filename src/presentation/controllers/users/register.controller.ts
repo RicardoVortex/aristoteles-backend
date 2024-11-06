@@ -16,15 +16,14 @@ export class RegisterUserController implements Controller {
 
   async handle(httpRequest: HttpRequest): Promise<HttpResponse> {
     try {
-      const { names, surnames, email, password, date_birth, role_id } =
+      const { names, surnames, email, password, role_id } =
         httpRequest.body;
 
       const user = await this.userRepository.create({
         names,
         surnames,
         email,
-        password,
-        date_birth,
+        password,        
         role_id,
       });
 

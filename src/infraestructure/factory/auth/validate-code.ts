@@ -1,6 +1,6 @@
 import { ValiodateCodeController } from "../../../presentation/controllers/auth";
 
-import { AuthDataSource, UserDataSource } from "../../datasource";
+import { AuthDataSource, UserDataSource } from "../../../domain/datasource";
 
 export const makeValidateCodeController = (): ValiodateCodeController => {
   const authRepository = new AuthDataSource();

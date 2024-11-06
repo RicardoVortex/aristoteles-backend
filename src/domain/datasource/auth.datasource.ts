@@ -4,10 +4,10 @@ import { compareSync } from "bcrypt";
 
 import { envs } from "../../config";
 
-import { AuthRepository } from "../../domain/repositories";
-import { ChangePasswordDto, SignTokenDto } from "../../domain/dtos";
-import { CustomError } from "../../domain/errors/custom.error";
-import { UserEntity } from "../../domain/entities";
+import { AuthRepository } from "../repositories";
+import { ChangePasswordDto, SignTokenDto } from "../dtos";
+import { CustomError } from "../errors/custom.error";
+import { UserEntity } from "../entities";
 
 import User from "../../data/sequelize/models/user.model";
 

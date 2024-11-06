@@ -1,6 +1,6 @@
 import { ChangePasswordController } from "../../../presentation/controllers/auth";
 
-import { AuthDataSource, UserDataSource } from "../../datasource";
+import { AuthDataSource, UserDataSource } from "../../../domain/datasource";
 
 export const makeChangePasswordController = (): ChangePasswordController => {
   const authRepository = new AuthDataSource();

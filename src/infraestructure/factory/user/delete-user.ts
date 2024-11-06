@@ -1,6 +1,6 @@
 import { DeleteUserController } from "../../../presentation/controllers/users";
 
-import { UserDataSource } from "../../datasource";
+import { UserDataSource } from "../../../domain/datasource";
 
 export const makeDeleteUserController = (): DeleteUserController => {
   const userRepository = new UserDataSource();

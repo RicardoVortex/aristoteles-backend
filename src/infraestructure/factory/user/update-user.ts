@@ -1,6 +1,6 @@
 import { UpdateUserController } from "../../../presentation/controllers/users";
 
-import { UserDataSource } from "../../datasource";
+import { UserDataSource } from "../../../domain/datasource";
 
 export const makeUpdateUserController = (): UpdateUserController => {
   const userRepository = new UserDataSource();
