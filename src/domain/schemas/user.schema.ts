@@ -31,10 +31,7 @@ export class UserSchema {
         .isLength({ min: 8 })
         .withMessage(
           "La contraseña debe tener como mínimo 8 caracteres de longitud!"
-        ),
-      body("date_birth")
-        .isDate()
-        .withMessage("La fecha de cumpleaños no es valida!"),
+        ),      
     ];
   }
 
